@@ -1,21 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class enemyBullet : MonoBehaviour
+public class enemyBullet : NetworkBehaviour
 {
 
     public float timer = 0.0f;
     public float speed;
-    int tilt = 0;
-    int rot = 0;
-    public float pozition;
     public Material mat;
-    private Light myLight;
-    private Material bullG;
 
+    Color lerpedColor = Color.red;
 
-    
 
 
 
@@ -23,9 +19,6 @@ public class enemyBullet : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-
-
-        var myLight = GameObject.FindWithTag("RHalo");
 
 
 
@@ -40,7 +33,7 @@ public class enemyBullet : MonoBehaviour
 
 
 
-
+        lerpedColor = Color.Lerp(Color.red, Color.yellow, Mathf.PingPong(Time.time, 1));
         Vector3 pos = transform.position;
         pos.z = 0;
         transform.position = pos;
@@ -55,11 +48,7 @@ public class enemyBullet : MonoBehaviour
         {
 
             Material mymat = GetComponent<Renderer>().material;
-            mymat.SetColor("_EmissionColor", Color.red);
-
-
-
-            myLight.enabled = false;
+            mymat.SetColor("_EmissionColor", lerpedColor);
             
 
 
@@ -72,35 +61,12 @@ public class enemyBullet : MonoBehaviour
         }
 
 
-            if (timer > 2.0f)
+        if (timer > 2.0f)
         {
             Material mymat = GetComponent<Renderer>().material;
-            mymat.SetColor("_EmissionColor", Color.yellow);
+            mymat.SetColor("_EmissionColor", lerpedColor);
 
         }
 
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -2,34 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fishmover2 : MonoBehaviour
+public class enemyFish : MonoBehaviour
 {
+
     public float timer = 0.0f;
-    public float speed;
+    public float speed = 8.0f;
     int tilt = 0;
     int rot = 0;
-    public float pozition;
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Use this for initialization
     void Start()
     {
-
-
-
-
-
-
     }
 
 
-
-
-
-
-
-
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Update is called once per frame
     void Update()
     {
@@ -43,43 +32,48 @@ public class fishmover2 : MonoBehaviour
 
 
 
-        transform.Translate(-speed, 0, 0);
-        transform.eulerAngles = new Vector3(0, -rot, tilt);
+        transform.Translate(-speed * Time.deltaTime, 0, 0);
+        transform.eulerAngles = new Vector3(0, -rot, -tilt);
+       
 
-
-        timer += 1.0f * Time.deltaTime;
-        if (timer > 3.0f)
+        timer += 2.5f * Time.deltaTime;
+        if (timer > 6.0f)
         {
-            tilt = 5;
-            rot = 5;
+            tilt = 18;
+            rot = 18;
+            speed = 9.0f;
         }
 
-
-        if (timer > 3.5f)
+       
+        if (timer > 7.0f)
         {
-            tilt = 10;
-            rot = 10;
+            tilt = 36;
+            rot = 36;
+            speed = 10.0f;
         }
 
-        if (timer > 4)
+        if (timer > 8.0f)
         {
-            tilt = 15;
-            rot = 15;
+            tilt = 54;
+            rot = 54;
+            speed = 11.0f;
         }
 
-        if (timer > 4.5f)
+        if (timer > 9.0f)
         {
-            tilt = 20;
-            rot = 20;
+            tilt = 72;
+            rot = 72;
+            speed = 12.0f;
         }
 
-        if (timer > 4.7f)
+ /*       if (timer > 9.0f)
         {
-            tilt = 25;
-            rot = 25;
+            tilt = 90;
+            rot = 90;
+            speed = 10.0f;
         }
 
-        if (timer > 5f)
+        if (timer > 6.0f)
         {
             tilt = 30;
             rot = 30;
@@ -155,7 +149,7 @@ public class fishmover2 : MonoBehaviour
         {
             tilt = 90;
             rot = 90;
-        }
+        }*/
 
     }
 
