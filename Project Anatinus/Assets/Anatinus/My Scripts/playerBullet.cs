@@ -19,6 +19,12 @@ public class playerBullet : MonoBehaviour
 
         if (bullet > 1 & bullet < 3)
         { transform.Translate(0, -vertSpeed * Time.deltaTime, 0); }
+
+        
+        if (transform.position.x > 10)
+        {
+            Destroy(GameObject.Find("bullet1"));
+        }
     }
 
 

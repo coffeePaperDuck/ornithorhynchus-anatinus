@@ -109,7 +109,7 @@ public class PlayerController : NetworkBehaviour
         }
 
         // Detect if bullet exists, then delete the bullet after going off the screen
-        if (GameObject.Find("bullet1") != null)
+        /*if (GameObject.Find("bullet1") != null)
         {
             GameObject.Find("bullet1").GetComponent<playerBullet>().bullet = 1;
             if (GameObject.Find("bullet1").transform.position.x > 10)
@@ -124,7 +124,7 @@ public class PlayerController : NetworkBehaviour
             {
                 Destroy(GameObject.Find("bullet2"));
             }
-        }
+        }*/
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
