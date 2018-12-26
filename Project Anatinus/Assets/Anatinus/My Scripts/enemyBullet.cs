@@ -49,16 +49,16 @@ public class enemyBullet : NetworkBehaviour
 
             Material mymat = GetComponent<Renderer>().material;
             mymat.SetColor("_EmissionColor", lerpedColor);
-            
 
 
-        }
-
-        if (timer > 1.0f)
-        {
-          
 
         }
+
+        //if (timer > 1.0f)
+        //{
+
+
+        //}
 
 
         if (timer > 2.0f)
