@@ -6,9 +6,22 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
 {
+    public GameObject defaultBullet1Prefab;
+    public GameObject defaultBullet2Prefab;
 
-    public GameObject bulletPrefab;
+    public GameObject wideBullet0Prefab;
+    public GameObject wideBullet1Prefab;
+    public GameObject wideBullet2Prefab;
+    public GameObject wideBullet3Prefab;
+
+    public GameObject sonicPrefab;
+    public GameObject rocketPrefab;
+    public GameObject lightningPrefab;
+
     public Transform bulletSpawn;
+    public Transform rocketSpawn;
+
+    public int powerUp = 0;
     public float animationTimer = 2.5f;
     public float speed = 10.0f;
     int tilt = 0;
@@ -28,6 +41,19 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer)
         {
             return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            powerUp = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            powerUp = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            powerUp = 2;
         }
 
         //ship animation tilts
@@ -109,22 +135,37 @@ public class PlayerController : NetworkBehaviour
         }
 
         // Detect if bullet exists, then delete the bullet after going off the screen
-        /*if (GameObject.Find("bullet1") != null)
+        if (GameObject.Find("bullet0(Clone)") != null)
         {
-            GameObject.Find("bullet1").GetComponent<playerBullet>().bullet = 1;
-            if (GameObject.Find("bullet1").transform.position.x > 10)
+            if (GameObject.Find("bullet0(Clone)").transform.position.x > 10)
             {
-                Destroy(GameObject.Find("bullet1"));
+                Destroy(GameObject.Find("bullet0(Clone)"));
             }
         }
-        if (GameObject.Find("bullet2") != null)
+
+        if (GameObject.Find("bullet1(Clone)") != null)
         {
-            GameObject.Find("bullet2").GetComponent<playerBullet>().bullet = 2;
-            if (GameObject.Find("bullet2").transform.position.x > 10)
+            if (GameObject.Find("bullet1(Clone)").transform.position.x > 10)
             {
-                Destroy(GameObject.Find("bullet2"));
+                Destroy(GameObject.Find("bullet1(Clone)"));
             }
-        }*/
+        }
+
+        if (GameObject.Find("bullet2(Clone)") != null)
+        {
+            if (GameObject.Find("bullet2(Clone)").transform.position.x > 10)
+            {
+                Destroy(GameObject.Find("bullet2(Clone)"));
+            }
+        }
+
+        if (GameObject.Find("bullet3(Clone)") != null)
+        {
+            if (GameObject.Find("bullet3(Clone)").transform.position.x > 10)
+            {
+                Destroy(GameObject.Find("bullet3(Clone)"));
+            }
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,20 +173,34 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdFire()
     {
-
         // Create bullet from the prefab
-        GameObject bullet1 = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        bullet1.name = "bullet1";
-        bullet2.name = "bullet2";
+        if (powerUp > -1 & powerUp < 1)
+        {
+            GameObject bullet1 = (GameObject)Instantiate(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet2 = (GameObject)Instantiate(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            defaultBullet1Prefab.name = "bullet1";
+            defaultBullet2Prefab.name = "bullet2";
+            // Spawn the bullet on the Clients
+            NetworkServer.Spawn(bullet1);
+            NetworkServer.Spawn(bullet2);
+        }
 
-
-        // Add velocity to the bullet
-
-
-        // Spawn the bullet on the Clients
-        NetworkServer.Spawn(bullet1);
-        NetworkServer.Spawn(bullet2);
+        if (powerUp > 0 & powerUp < 2)
+        {
+            GameObject bullet0 = (GameObject)Instantiate(wideBullet0Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet1 = (GameObject)Instantiate(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet2 = (GameObject)Instantiate(wideBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet3 = (GameObject)Instantiate(wideBullet3Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            wideBullet0Prefab.name = "bullet0";
+            wideBullet1Prefab.name = "bullet1";
+            wideBullet2Prefab.name = "bullet2";
+            wideBullet3Prefab.name = "bullet3";
+            // Spawn the bullet on the Clients
+            NetworkServer.Spawn(bullet0);
+            NetworkServer.Spawn(bullet1);
+            NetworkServer.Spawn(bullet2);
+            NetworkServer.Spawn(bullet3);
+        }
 
     }
 
