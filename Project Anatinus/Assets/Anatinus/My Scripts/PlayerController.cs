@@ -22,6 +22,7 @@ public class PlayerController : NetworkBehaviour
     public Transform rocketSpawn;
 
     public int powerUp = 0;
+    public int powerUpTimer = 0;
     public float animationTimer = 2.5f;
     public float speed = 10.0f;
     int tilt = 0;
@@ -135,7 +136,7 @@ public class PlayerController : NetworkBehaviour
         }
 
         // Detect if bullet exists, then delete the bullet after going off the screen
-        if (GameObject.Find("bullet0(Clone)") != null)
+        /*if (GameObject.Find("bullet0(Clone)") != null)
         {
             if (GameObject.Find("bullet0(Clone)").transform.position.x > 10)
             {
@@ -165,7 +166,7 @@ public class PlayerController : NetworkBehaviour
             {
                 Destroy(GameObject.Find("bullet3(Clone)"));
             }
-        }
+        }*/
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

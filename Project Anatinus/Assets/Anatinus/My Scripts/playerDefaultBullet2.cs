@@ -22,13 +22,19 @@ public class playerDefaultBullet2 : MonoBehaviour
 
         if (transform.position.x > 10)
         {
-            //Destroy(GameObject.Find("bullet2(Clone)"));
+            Destroy(gameObject);
         }
     }
 
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
+        GameObject hit = collision.gameObject;
+        Health health = hit.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDamage(1);
+        }
         Destroy(gameObject);
     }
 }

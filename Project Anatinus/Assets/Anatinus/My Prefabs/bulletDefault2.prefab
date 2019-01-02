@@ -26,8 +26,8 @@ GameObject:
   - component: {fileID: 54338030641389586}
   - component: {fileID: 114330095443322790}
   - component: {fileID: 114163904148905086}
-  m_Layer: 8
-  m_Name: bulletDefault2
+  m_Layer: 11
+  m_Name: bullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,8 +96,8 @@ Rigidbody:
   m_GameObject: {fileID: 1075423926136582}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0

@@ -14,7 +14,7 @@ public class playerWideBullet3 : MonoBehaviour
 
         if (transform.position.x > 10)
         {
-            //Destroy(GameObject.Find("bullet1(Clone)"));
+            Destroy(gameObject);
         }
     }
 

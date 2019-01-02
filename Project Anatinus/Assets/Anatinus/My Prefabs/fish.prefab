@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4448151305501386}
   - component: {fileID: 33390917275066550}
   - component: {fileID: 23266796086412488}
-  m_Layer: 0
+  - component: {fileID: 64525133641028222}
+  m_Layer: 14
   m_Name: platypus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,10 +39,9 @@ GameObject:
   - component: {fileID: 4928335946726440}
   - component: {fileID: 33761622711428824}
   - component: {fileID: 23259590284319006}
-  - component: {fileID: 65088210637813754}
   - component: {fileID: 54708372709845648}
   - component: {fileID: 114726288336820662}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,26 +171,28 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1618245759088760}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: 5
+  m_Mass: 1e+9
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
---- !u!65 &65088210637813754
-BoxCollider:
+--- !u!64 &64525133641028222
+MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618245759088760}
+  m_GameObject: {fileID: 1405106692573438}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_SkinWidth: 1.00000005e-20
+  m_Mesh: {fileID: 4300000, guid: 80cfdd69fba5b9a49ae2e8b43f388bd5, type: 3}
 --- !u!114 &114726288336820662
 MonoBehaviour:
   m_ObjectHideFlags: 1

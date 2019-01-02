@@ -13,30 +13,30 @@ TagManager:
   - UI
   - 
   - 
+  - Layer Barrier
+  - 
   - Layer Player
-  - Bullet
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 'Layer Player '
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Layer Player Offense
+  - Layer Player Defense
   - 
   - Layer Baddie
-  - Layer Baddie Bullet
+  - Layer Baddie Offense
+  - 
+  - Layer Collectible
+  - Layer Collectible Clumped
+  - 
+  - Layer Package
+  - 
+  - Layer Environment ~allBullets,player&baddie
+  - Layer Environment ~noBullets,player&baddie
+  - Layer Environment ~playerOnly
   - 
   - 
   - 
-  - Layer Destructible
-  - Layer Collidable
-  - Layer Barrier
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

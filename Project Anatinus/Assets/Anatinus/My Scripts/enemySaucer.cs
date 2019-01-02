@@ -6,12 +6,10 @@ using UnityEngine.Networking;
 
 public class enemySaucer : NetworkBehaviour
 {
-
     public float animationTimer = 12.0f;
     public float maxSpeed = 10.0f;
     float speed;
     int tilt = 0;
-
 
 
     // Use this for initialization
@@ -30,19 +28,19 @@ public class enemySaucer : NetworkBehaviour
         if (animationTimer > 1.0f)
         {
             tilt = 15;
-            speed = maxSpeed / 2 * Time.deltaTime;
+            speed = maxSpeed / 2;
         }
 
         if (animationTimer > 2.0f)
         {
             tilt = 30;
-            speed = maxSpeed * Time.deltaTime;
+            speed = maxSpeed;
         }
 
         if (animationTimer > 5.0f)
         {
             tilt = 15;
-            speed = maxSpeed / 2 * Time.deltaTime;
+            speed = maxSpeed / 2;
         }
 
         if (animationTimer > 6.0f)
@@ -54,19 +52,19 @@ public class enemySaucer : NetworkBehaviour
         if (animationTimer > 7.0f)
         {
             tilt = -15;
-            speed = -maxSpeed / 2 * Time.deltaTime;
+            speed = -maxSpeed / 2;
         }
 
         if (animationTimer > 8.0f)
         {
             tilt = -30;
-            speed = -maxSpeed * Time.deltaTime;
+            speed = -maxSpeed;
         }
 
         if (animationTimer > 11.0f)
         {
             tilt = -15;
-            speed = -maxSpeed / 2 * Time.deltaTime;
+            speed = -maxSpeed / 2;
         }
 
         if (animationTimer > 12.0f)
@@ -78,7 +76,7 @@ public class enemySaucer : NetworkBehaviour
 
 
         //apply tilts
-        transform.Translate(0, speed, 0);
+        transform.Translate(0, speed * Time.deltaTime, 0);
         transform.eulerAngles = new Vector3(tilt, 0, 0);
         Vector3 pos = transform.position;
         pos.z = 0;

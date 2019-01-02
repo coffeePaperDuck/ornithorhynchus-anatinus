@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4940078566840978}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114199626507204566}
   - component: {fileID: 114781770890975254}
   - component: {fileID: 54550379050169268}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 33495769065648770}
   - component: {fileID: 23562438390355178}
   - component: {fileID: 64871741431712732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560210776843500}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.0000001
   m_Drag: Infinity
   m_AngularDrag: Infinity
   m_UseGravity: 0
@@ -262,5 +262,6 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4940078566840978}
   rocketSpawn: {fileID: 0}
   powerUp: 0
+  powerUpTimer: 0
   animationTimer: 2.5
   speed: 10
