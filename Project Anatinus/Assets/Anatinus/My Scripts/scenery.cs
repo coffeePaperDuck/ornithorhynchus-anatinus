@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class scenery : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = -8.0f;
+    public float timer = 2.0f;
+    public int endPoint = -30;
 
     // Use this for initialization
     void Start ()
@@ -17,8 +19,17 @@ public class scenery : MonoBehaviour
     {
         transform.Translate(speed * Time.deltaTime, 0, 0);
 
-        if (transform.position.x > 10)
-        { }
+        //lock onto axises listed below
+        Vector3 pos = transform.position;
+        /*Y axis*/pos.y = transform.position.y;
+        /*Z axis*/pos.z = transform.position.z;
+        transform.position = pos;
 
+        if (transform.position.x < endPoint)
+        {
+            Destroy(gameObject);
+        }
     }
 }
+
+
