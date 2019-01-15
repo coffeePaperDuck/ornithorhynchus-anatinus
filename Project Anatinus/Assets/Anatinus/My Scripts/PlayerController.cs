@@ -122,10 +122,13 @@ public class PlayerController : NetworkBehaviour
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         //apply tilts
         transform.eulerAngles = new Vector3(tilt, 0, 0);
+
+        //lock onto axises listed below
         Vector3 pos = transform.position;
-        pos.z = 0;
+        /*Z axis*/pos.z = 0;
         transform.position = pos;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

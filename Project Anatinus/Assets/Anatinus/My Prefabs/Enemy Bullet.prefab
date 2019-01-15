@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23121103574679152}
   - component: {fileID: 135822675889629528}
   - component: {fileID: 114700869775845566}
+  - component: {fileID: 114277594476768056}
   m_Layer: 15
   m_Name: Enemy Bullet
   m_TagString: Untagged
@@ -238,6 +239,17 @@ MonoBehaviour:
   startColor: {r: 1, g: 0, b: 0, a: 0}
   endColor: {r: 1, g: 0.8784314, b: 0, a: 0}
   repeatColor: 1
+--- !u!114 &114277594476768056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1031437687852804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0aa214eb53b5b459f176231ed2a7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114700869775845566
 MonoBehaviour:
   m_ObjectHideFlags: 1
