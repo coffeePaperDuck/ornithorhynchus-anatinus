@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
->>>>>>> 05e8252dad709b17814dc8be6dd744ef443ae8da
 // Upgrade NOTE: replaced '_Projector' with 'unity_Projector'
 // Upgrade NOTE: replaced '_ProjectorClip' with 'unity_ProjectorClip'
 
@@ -38,11 +35,7 @@ Shader "Projector/Multiply" {
 			v2f vert (float4 vertex : POSITION)
 			{
 				v2f o;
-<<<<<<< HEAD
-				o.pos = UnityObjectToClipPos(vertex);
-=======
 				o.pos = UnityObjectToClipPos (vertex);
->>>>>>> 05e8252dad709b17814dc8be6dd744ef443ae8da
 				o.uvShadow = mul (unity_Projector, vertex);
 				o.uvFalloff = mul (unity_ProjectorClip, vertex);
 				UNITY_TRANSFER_FOG(o,o.pos);
