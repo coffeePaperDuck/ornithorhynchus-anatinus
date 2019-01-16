@@ -245,6 +245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a1d2ce42fc85747a1397714496ea50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SyncVarDirtyBits: 0
+  m_LastSendTime: 0
+  m_SyncVarGuard: 0
+  m_MyView: {fileID: 0}
   currentHealth: 1
 --- !u!114 &114781770890975254
 MonoBehaviour:

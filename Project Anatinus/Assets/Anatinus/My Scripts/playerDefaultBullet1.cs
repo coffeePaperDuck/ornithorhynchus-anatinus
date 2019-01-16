@@ -31,10 +31,12 @@ public class playerDefaultBullet1 : MonoBehaviour
     {
         GameObject hit = collision.gameObject;
         Health health = hit.GetComponent<Health>();
+
         if (health != null)
         {
             health.TakeDamage(1);
         }
+
         Destroy(gameObject);
     }
 }
