@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemySquid : MonoBehaviour
+public class enemySquidAnimation : MonoBehaviour
 {
     public float timer = 0.0f;
     public float speed = 8.0f;
