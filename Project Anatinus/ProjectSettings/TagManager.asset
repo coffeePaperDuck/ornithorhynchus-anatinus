@@ -14,29 +14,29 @@ TagManager:
   - 
   - 
   - Layer Barrier
-  - 
   - Layer Player
   - Layer Player Offense
   - Layer Player Defense
-  - 
   - Layer Baddie
   - Layer Baddie Offense
-  - 
   - Layer Collectible
   - Layer Collectible Clumped
-  - 
   - Layer Package
-  - 
   - Layer Environment ~allBullets,player&baddie
   - Layer Environment ~noBullets,player&baddie
   - Layer Environment ~playerOnly
-  - 
-  - 
-  - 
-  - 
-  - 
-  - Layer Scenery Spawn
-  - Under Rendor
+  - Render 1
+  - Render 2
+  - Render 3
+  - Render 4
+  - Render 5
+  - Render 6
+  - Render 7
+  - Render 8
+  - Render 9
+  - Render 10
+  - Render 11
+  - Render 12
   m_SortingLayers:
   - name: Default
     uniqueID: 0

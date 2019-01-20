@@ -4,72 +4,90 @@ using UnityEngine;
 
 public class enemySquidMovement : MonoBehaviour
 {
+    public int maxSpeed = 9;
+
     public float xSpeed = 0;
     public float ySpeed = 0;
 
-    public float timer = 1.0f;
     public float fleeTimer = 15.0f;
 
     public bool fleeing = false;
 
-    public float posY = 0;
     public float posX = 0;
-
-    public float limitY = 0;
-    public float limitY2 = 0;
+    public float posY = 0;
 
     public float limitX = 0;
     public float limitX2 = 0;
+
+    public float limitY = 0;
+    public float limitY2 = 0;
 
 
     // Use this for initialization
     void Start ()
     {
-        posX = 7.5f;
-        posY = Random.Range(1.0f, 4.0f);
+        if (transform.position.x < this.posX)
+        {
+            xSpeed = 9.0f;
+        }
+        if (transform.position.x > this.posX)
+        {
+            xSpeed = -9.0f;
+        }
+        if (transform.position.y < this.posX)
+        {
+            ySpeed = 9.0f;
+        }
+        if (transform.position.y > this.posX)
+        {
+            ySpeed = -9.0f;
+        }
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        timer -= 1.0f * Time.deltaTime;
         fleeTimer -= 1.0f * Time.deltaTime;
 
         transform.Translate(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime, 0);
 
-        if (fleeing = false & timer < 0.0f)
-        {
-            limitX = Random.Range(0, 10);
-            limitX2 = Random.Range(0, 10);
+        //Limit how far the enemy can sling.
+        this.limitX = Random.Range(-90, 90);
+        this.limitX2 = Random.Range(-90, 90);
 
-            limitY = Random.Range(0, 10);
-            limitY2 = Random.Range(0, 10);
+        this.limitY = Random.Range(-90, 90);
+        this.limitY2 = Random.Range(-90, 90);
 
-            timer = 1.0f;
-        }
-
+        //When fleeTimer runs out, fleeing = true.
         if (fleeTimer < 0.0f)
         {
             fleeing = true;
         }
 
-        //float x = transform.position.x;
-        //float y = transform.position.y;
-        if (transform.position.x < posX)
+        //If fleeing = true, mark an off-screen position for the enemy to fly to.
+        if (fleeing != false)
         {
-            xSpeed += 0.5f;
+            posX = -100;
+            if (this.transform.position.x < -20)
+            { Destroy(gameObject); }
         }
-        if (transform.position.x > posX)
+
+        //Once the enemy has passed the marked position, change speed.
+        if (this.transform.position.x < this.posX & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
         {
-            xSpeed -= 0.5f;
+            xSpeed += 0.45f;
         }
-        if (transform.position.y < posY)
+        if (this.transform.position.x > this.posX & this.xSpeed > -maxSpeed & this.xSpeed > -this.limitX2)
         {
-            ySpeed += 0.5f;
+            xSpeed -= 0.45f;
         }
-        if (transform.position.x > posY)
+        if (this.transform.position.y < this.posY & this.ySpeed < maxSpeed & this.ySpeed < this.limitY)
         {
-            ySpeed -= 0.5f;
+            ySpeed += 0.45f;
+        }
+        if (this.transform.position.y > this.posY & this.ySpeed > -maxSpeed & this.ySpeed > -this.limitY2)
+        {
+            ySpeed -= 0.45f;
         }
     }
 }

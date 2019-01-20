@@ -21,10 +21,8 @@ GameObject:
   - component: {fileID: 4125658104003726}
   - component: {fileID: 33411623546775226}
   - component: {fileID: 23121103574679152}
-  - component: {fileID: 135822675889629528}
-  - component: {fileID: 114700869775845566}
-  - component: {fileID: 114277594476768056}
-  m_Layer: 15
+  - component: {fileID: 114776371680376748}
+  m_Layer: 31
   m_Name: Enemy Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +39,7 @@ GameObject:
   - component: {fileID: 4718389240281430}
   - component: {fileID: 108421322622522502}
   - component: {fileID: 114788825964260118}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: Halo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +56,7 @@ GameObject:
   - component: {fileID: 4058383703035634}
   - component: {fileID: 108703816603991036}
   - component: {fileID: 114054344486085716}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,8 +83,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031437687852804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: -2, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4718389240281430}
   - {fileID: 4058383703035634}
@@ -158,8 +156,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0.8784314, b: 0, a: 1}
-  m_Intensity: 0.7
-  m_Range: 0.7
+  m_Intensity: 0.1
+  m_Range: 0.6
   m_SpotAngle: 30
   m_CookieSize: 0
   m_Shadows:
@@ -196,7 +194,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.8784314, b: 0, a: 1}
   m_Intensity: 4
-  m_Range: 7
+  m_Range: 8
   m_SpotAngle: 30
   m_CookieSize: 0
   m_Shadows:
@@ -239,18 +237,7 @@ MonoBehaviour:
   startColor: {r: 1, g: 0, b: 0, a: 0}
   endColor: {r: 1, g: 0.8784314, b: 0, a: 0}
   repeatColor: 1
---- !u!114 &114277594476768056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1031437687852804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b0aa214eb53b5b459f176231ed2a7cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114700869775845566
+--- !u!114 &114776371680376748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,15 +268,3 @@ MonoBehaviour:
   startColor: {r: 1, g: 0, b: 0, a: 0}
   endColor: {r: 1, g: 0.8784314, b: 0, a: 0}
   repeatColor: 1
---- !u!135 &135822675889629528
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1031437687852804}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
