@@ -25,6 +25,15 @@ TagManager:
   - Layer Environment ~allBullets,player&baddie
   - Layer Environment ~noBullets,player&baddie
   - Layer Environment ~playerOnly
+<<<<<<< HEAD
+  - 
+  - 
+  - 
+  - 
+  - Brighter bloom
+  - Layer Scenery Spawn
+  - Under Rendor
+=======
   - Render 1
   - Render 2
   - Render 3
@@ -37,6 +46,7 @@ TagManager:
   - Render 10
   - Render 11
   - Render 12
+>>>>>>> a7aa3e2c61c73db13eaa40fa8f1b3d22b115423c
   m_SortingLayers:
   - name: Default
     uniqueID: 0
