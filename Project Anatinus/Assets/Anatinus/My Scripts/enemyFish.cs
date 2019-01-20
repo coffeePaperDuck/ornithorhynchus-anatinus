@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class enemyFish : MonoBehaviour
 {
-
     public float timer = 0.0f;
     public float speed = 8.0f;
+    public int direction;
     int tilt = 0;
     int rot = 0;
 
@@ -22,7 +22,10 @@ public class enemyFish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (direction > 0)
+        {
+            tilt = -tilt;
+        }
 
         Vector3 pos = transform.position;
         pos.z = 0;
@@ -33,7 +36,7 @@ public class enemyFish : MonoBehaviour
 
 
         transform.Translate(-speed * Time.deltaTime, 0, 0);
-        transform.eulerAngles = new Vector3(0, -rot, -tilt);
+        transform.eulerAngles = new Vector3(0, -rot, tilt);
        
 
         timer += 2.5f * Time.deltaTime;
