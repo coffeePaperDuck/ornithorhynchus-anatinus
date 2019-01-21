@@ -24,10 +24,6 @@ GameObject:
   - component: {fileID: 54338030641389586}
   - component: {fileID: 114330095443322790}
   - component: {fileID: 114163904148905086}
-<<<<<<< HEAD
-  m_Layer: 11
-  m_Name: bulletDefault2
-=======
   m_Layer: 10
   m_Name: bulletDefault2
   m_TagString: Untagged
@@ -48,7 +44,6 @@ GameObject:
   - component: {fileID: 108906990708877942}
   m_Layer: 30
   m_Name: Graphics
->>>>>>> a7aa3e2c61c73db13eaa40fa8f1b3d22b115423c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

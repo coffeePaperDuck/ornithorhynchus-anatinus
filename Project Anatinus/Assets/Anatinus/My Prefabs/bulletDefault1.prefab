@@ -42,11 +42,7 @@ GameObject:
   - component: {fileID: 54820598848042748}
   - component: {fileID: 114757164889311762}
   - component: {fileID: 114601674556476472}
-<<<<<<< HEAD
-  m_Layer: 11
-=======
   m_Layer: 10
->>>>>>> a7aa3e2c61c73db13eaa40fa8f1b3d22b115423c
   m_Name: bulletDefault1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
