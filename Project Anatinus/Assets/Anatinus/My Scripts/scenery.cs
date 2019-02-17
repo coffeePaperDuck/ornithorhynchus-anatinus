@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class scenery : MonoBehaviour
 {
-    public float speed = -8.0f;
+    float speed = -5.0f;
     public float timer = 2.0f;
     public int endPoint = -30;
 

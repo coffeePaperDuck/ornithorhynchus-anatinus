@@ -13,12 +13,6 @@ public class Health : NetworkBehaviour
     void Update()
     {
         timer -= 5.0f * Time.deltaTime;
-        if (timer < 0 & currentHealth < 0)
-        {
-            gameObject.SetActive(true);
-            Debug.Log("Alive");
-            currentHealth = 100;
-        }
     }
 
 

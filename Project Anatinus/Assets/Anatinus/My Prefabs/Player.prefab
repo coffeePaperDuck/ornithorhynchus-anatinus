@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de023ae7180e1274385a607de040e33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultBullet1Prefab: {fileID: 1847940540954546, guid: 3949d21ad24367447a3d4c6fcf007b52,
+  defaultBullet1Prefab: {fileID: 1700806082025892, guid: 3949d21ad24367447a3d4c6fcf007b52,
     type: 2}
   defaultBullet2Prefab: {fileID: 1075423926136582, guid: 31c00ff6aac2b404f9165c28fa137d91,
     type: 2}

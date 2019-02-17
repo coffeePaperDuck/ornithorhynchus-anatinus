@@ -10,7 +10,6 @@ public class enemySquidMovement : MonoBehaviour
     public float ySpeed = 0;
 
     public float fleeTimer = 15.0f;
-
     public bool fleeing = false;
 
     public float posX = 0;
@@ -22,6 +21,8 @@ public class enemySquidMovement : MonoBehaviour
     public float limitY = 0;
     public float limitY2 = 0;
 
+    public float maxLimitTimer = 0.001f;
+    public float limitTimer = 0.0f;
 
     // Use this for initialization
     void Start ()
@@ -48,15 +49,39 @@ public class enemySquidMovement : MonoBehaviour
 	void Update ()
     {
         fleeTimer -= 1.0f * Time.deltaTime;
+        limitTimer += 1.0f * Time.deltaTime;
 
         transform.Translate(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime, 0);
 
-        //Limit how far the enemy can sling.
-        this.limitX = Random.Range(-90, 90);
-        this.limitX2 = Random.Range(-90, 90);
+        //Make it so that these changes are based on time, rather than frames
+        if (limitTimer > maxLimitTimer)
+        {
+            //Limit how far the enemy can sling.
+            this.limitX = Random.Range(-90, 90);
+            this.limitX2 = Random.Range(-90, 90);
 
-        this.limitY = Random.Range(-90, 90);
-        this.limitY2 = Random.Range(-90, 90);
+            this.limitY = Random.Range(-90, 90);
+            this.limitY2 = Random.Range(-90, 90);
+            limitTimer = 0.0f;
+
+            //Once the enemy has passed the marked position, change speed.
+            if (this.transform.position.x < this.posX & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
+            {
+                xSpeed += 0.9f;
+            }
+            if (this.transform.position.x > this.posX & this.xSpeed > -maxSpeed & this.xSpeed > -this.limitX2)
+            {
+                xSpeed -= 0.9f;
+            }
+            if (this.transform.position.y < this.posY & this.ySpeed < maxSpeed & this.ySpeed < this.limitY)
+            {
+                ySpeed += 0.9f;
+            }
+            if (this.transform.position.y > this.posY & this.ySpeed > -maxSpeed & this.ySpeed > -this.limitY2)
+            {
+                ySpeed -= 0.9f;
+            }
+        }
 
         //When fleeTimer runs out, fleeing = true.
         if (fleeTimer < 0.0f)
@@ -70,24 +95,6 @@ public class enemySquidMovement : MonoBehaviour
             posX = -100;
             if (this.transform.position.x < -20)
             { Destroy(gameObject); }
-        }
-
-        //Once the enemy has passed the marked position, change speed.
-        if (this.transform.position.x < this.posX & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
-        {
-            xSpeed += 0.45f;
-        }
-        if (this.transform.position.x > this.posX & this.xSpeed > -maxSpeed & this.xSpeed > -this.limitX2)
-        {
-            xSpeed -= 0.45f;
-        }
-        if (this.transform.position.y < this.posY & this.ySpeed < maxSpeed & this.ySpeed < this.limitY)
-        {
-            ySpeed += 0.45f;
-        }
-        if (this.transform.position.y > this.posY & this.ySpeed > -maxSpeed & this.ySpeed > -this.limitY2)
-        {
-            ySpeed -= 0.45f;
         }
     }
 }

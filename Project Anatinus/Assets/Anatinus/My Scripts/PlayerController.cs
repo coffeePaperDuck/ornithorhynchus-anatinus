@@ -21,8 +21,8 @@ public class PlayerController : NetworkBehaviour
     public Transform bulletSpawn;
     public Transform rocketSpawn;
 
-    public int powerUp = 0;
-    public int powerUpTimer = 0;
+    public int powerup = 0;
+    public int powerupTimer = 0;
     public float animationTimer = 2.5f;
     public float speed = 10.0f;
     int tilt = 0;
@@ -46,15 +46,15 @@ public class PlayerController : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            powerUp = 0;
+            powerup = 0;
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            powerUp = 1;
+            powerup = 1;
         }
         if (Input.GetKeyDown(KeyCode.F3))
         {
-            powerUp = 2;
+            powerup = 2;
         }
 
         //ship animation tilts
@@ -178,7 +178,7 @@ public class PlayerController : NetworkBehaviour
     void CmdFire()
     {
         // Create bullet from the prefab
-        if (powerUp > -1 & powerUp < 1)
+        if (powerup > -1 & powerup < 1)
         {
             GameObject bullet1 = (GameObject)Instantiate(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject bullet2 = (GameObject)Instantiate(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
@@ -189,7 +189,7 @@ public class PlayerController : NetworkBehaviour
             NetworkServer.Spawn(bullet2);
         }
 
-        if (powerUp > 0 & powerUp < 2)
+        if (powerup > 0 & powerup < 2)
         {
             GameObject bullet0 = (GameObject)Instantiate(wideBullet0Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject bullet1 = (GameObject)Instantiate(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);

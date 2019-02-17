@@ -33,12 +33,20 @@ public class playerBullets : MonoBehaviour
     {
         GameObject hit = collision.gameObject;
         Health health = hit.GetComponent<Health>();
+        powerupStar powerup = hit.GetComponent<powerupStar>();
 
         if (health != null)
         {
             health.TakeDamage(dmg);
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
+        if (powerup != null)
+        {
+            if (powerup.timer < 0.3)
+            {
+                powerup.powerup += 0.01f;
+                Destroy(gameObject);
+            }
+        }
     }
 }
