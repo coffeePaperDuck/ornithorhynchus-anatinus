@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 
-public class playerBullets : MonoBehaviour
+public class playerBullets : NetworkBehaviour
 {
     public float speed = 20.0f;
     public float vertSpeed;
@@ -28,7 +29,7 @@ public class playerBullets : MonoBehaviour
         }
     }
 
-
+    //Collisions
     void OnCollisionEnter(Collision collision)
     {
         GameObject hit = collision.gameObject;

@@ -81,6 +81,15 @@ public class enemySquidMovement : MonoBehaviour
             {
                 ySpeed -= 0.9f;
             }
+
+            //lock rotation
+            transform.eulerAngles = new Vector3(0, 0, 0);
+
+            //lock onto axises listed below
+            Vector3 pos = transform.position;
+            /*Z axis*/
+            pos.z = 0;
+            transform.position = pos;
         }
 
         //When fleeTimer runs out, fleeing = true.

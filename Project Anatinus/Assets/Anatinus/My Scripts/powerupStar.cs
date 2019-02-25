@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class powerupStar : MonoBehaviour
+public class powerupStar : NetworkBehaviour
 {
+    [SyncVar]
     public float powerup = 1;
 
     public Material powerupWidePrefab;
@@ -20,8 +22,11 @@ public class powerupStar : MonoBehaviour
 
     Renderer rend;
 
+    [SyncVar]
     public int rot = 0;
+    [SyncVar]
     public float timer = 0;
+    [SyncVar]
     public float speed = -5.0f;
 
     // Use this for initialization
@@ -39,6 +44,10 @@ public class powerupStar : MonoBehaviour
         transform.Translate(speed * Time.deltaTime, 0, 0);
         transform.eulerAngles = new Vector3(0, rot, 0);
 
+        if (powerup > 0 & powerup < 2)
+        {
+
+        }
 
         //Star transitioning
         if (powerup > 1 & powerup < 2)
@@ -49,8 +58,9 @@ public class powerupStar : MonoBehaviour
             if (timer > 0.0f)
             {
                 rot = -45;
-                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
                 speed = 0;
+                powerup += 2.0f * Time.deltaTime;
+                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
             }
             if (timer > 1.0f)
             {
@@ -82,8 +92,9 @@ public class powerupStar : MonoBehaviour
             if (timer > 0.0f)
             {
                 rot = -45;
-                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
                 speed = 0;
+                powerup += 2.0f * Time.deltaTime;
+                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
             }
             if (timer > 1.0f)
             {
@@ -115,8 +126,9 @@ public class powerupStar : MonoBehaviour
             if (timer > 0.0f)
             {
                 rot = -45;
-                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
                 speed = 0;
+                powerup += 2.0f * Time.deltaTime;
+                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
             }
             if (timer > 1.0f)
             {
@@ -148,8 +160,9 @@ public class powerupStar : MonoBehaviour
             if (timer > 0.0f)
             {
                 rot = -45;
-                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
                 speed = 0;
+                powerup += 2.0f * Time.deltaTime;
+                transform.position += new Vector3(3 * Time.deltaTime, 0, 0);
             }
             if (timer > 1.0f)
             {

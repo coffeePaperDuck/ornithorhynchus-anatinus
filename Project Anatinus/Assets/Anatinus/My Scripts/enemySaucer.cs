@@ -6,9 +6,13 @@ using UnityEngine.Networking;
 
 public class enemySaucer : NetworkBehaviour
 {
+    [SyncVar]
     public float animationTimer = 12.0f;
+    [SyncVar]
     public float maxSpeed = 10.0f;
+    [SyncVar]
     float speed;
+    [SyncVar]
     int tilt = 0;
 
 
