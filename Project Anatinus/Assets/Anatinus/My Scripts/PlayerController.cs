@@ -311,7 +311,7 @@ public class PlayerController : NetworkBehaviour
         if (rocket != null)
         {
             playerRockets rocket1 = rocket.GetComponent<playerRockets>();
-            rocket1.lit = true;
+            rocket1.lit = 1;
             rocket1.name = "rocket1Lit";
         }
     }

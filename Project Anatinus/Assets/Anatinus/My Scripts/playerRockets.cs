@@ -6,10 +6,15 @@ using UnityEngine.Networking;
 
 public class playerRockets : NetworkBehaviour
 {
-    public bool lit = false;
+    [SyncVar]
+    public int lit = 0;
+    [SyncVar]
     public float speed;
+    [SyncVar]
     public float vertSpeed;
+    [SyncVar]
     public float timer = 0.0f;
+    [SyncVar]
     public float dmg;
 
     public Mesh rocket5Prefab;
@@ -31,7 +36,7 @@ public class playerRockets : NetworkBehaviour
         transform.Translate(speed * Time.deltaTime, vertSpeed * Time.deltaTime, 0);
         transform.eulerAngles = new Vector3(0, 0, 0);
 
-        if (lit == true)
+        if (lit == 1)
         {
             timer += 2.0f * Time.deltaTime;
             GetComponent<MeshFilter>().mesh = rocket4Prefab;
