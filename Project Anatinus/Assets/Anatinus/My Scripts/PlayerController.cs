@@ -69,6 +69,17 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
+        //TESTINGvvv
+        if (isServer)
+        {
+            Debug.Log("I'm the server");
+        }
+        if (!isServer)
+        {
+            Debug.Log("I'm the client");
+        }
+        //TESTING^^^
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             powerup = 0;
@@ -297,7 +308,7 @@ public class PlayerController : NetworkBehaviour
         {
             // Create rockets from the prefabs
             GameObject rocket1 = (GameObject)Instantiate(rocketPrefab, rocketSpawn.position, rocketSpawn.rotation);
-            rocketPrefab.name = "rocket1";
+            rocketPrefab.name = "rocket1" + GetInstanceID();
             // Spawn the rocket on the Clients
             NetworkServer.Spawn(rocket1);
         }
@@ -307,7 +318,7 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdLite()
     {
-        rocket = GameObject.Find("rocket1(Clone)");
+        rocket = GameObject.Find("rocket1" + GetInstanceID() + "(Clone)");
         if (rocket != null)
         {
             playerRockets rocket1 = rocket.GetComponent<playerRockets>();
