@@ -143,14 +143,12 @@ MonoBehaviour:
   autofireBulletCount: 0
   autofireTimerMax: 1
   autofireTimer: 1
-  sonicPrefab: {fileID: 1751675735287890885, guid: 26041501ac3c543469d3b3aa5cc21d50,
-    type: 3}
+  sonicPrefab: {fileID: 68, guid: 26041501ac3c543469d3b3aa5cc21d50, type: 3}
   pulseCountMax: 3
   pulseCount: 0
   pulseTimerMax: 0.5
   pulseTimer: 0
-  rocketPrefab: {fileID: 4113818216459581526, guid: b17cc536f3470c5438562b8af1a6a32e,
-    type: 3}
+  rocketPrefab: {fileID: 65, guid: b17cc536f3470c5438562b8af1a6a32e, type: 3}
   lightningPrefab: {fileID: 0}
   bulletSpawn: {fileID: 4940078566840978}
   rocketSpawn: {fileID: 4100180162481721613}
