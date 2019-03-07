@@ -50,17 +50,20 @@ public class PlayerController : NetworkBehaviour
 
     public GameObject defaultBullet1Prefab;
     public GameObject defaultBullet2Prefab;
+    public GameObject defaultBulletPodPrefab;
 
 
     public GameObject wideBullet0Prefab;
     public GameObject wideBullet1Prefab;
     public GameObject wideBullet2Prefab;
     public GameObject wideBullet3Prefab;
+    public GameObject wideBulletPodPrefab;
 
 
     public GameObject autoBullet1Prefab;
     public GameObject autoBullet2Prefab;
     public GameObject blueBulletLightPrefab;
+    public GameObject autoBulletPodPrefab;
 
 
     public GameObject sonicPrefab;
@@ -345,11 +348,16 @@ public class PlayerController : NetworkBehaviour
             // Create bullets from the prefabs
             GameObject bullet1 = (GameObject)LeanPool.Spawn(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject bullet2 = (GameObject)LeanPool.Spawn(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet1Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+            GameObject bullet2Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             defaultBullet1Prefab.name = "bullet1";
             defaultBullet2Prefab.name = "bullet2";
+            defaultBulletPodPrefab.name = "bulletPod";
             // Spawn the bullet on the Clients
             NetworkServer.Spawn(bullet1);
             NetworkServer.Spawn(bullet2);
+            NetworkServer.Spawn(bullet1Pod);
+            NetworkServer.Spawn(bullet2Pod);
         }
 
         //Wideshot
@@ -360,15 +368,20 @@ public class PlayerController : NetworkBehaviour
             GameObject wideBullet1 = (GameObject)LeanPool.Spawn(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject wideBullet2 = (GameObject)LeanPool.Spawn(wideBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject wideBullet3 = (GameObject)LeanPool.Spawn(wideBullet3Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet1Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+            GameObject wideBullet2Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             wideBullet0Prefab.name = "wideBullet0";
             wideBullet1Prefab.name = "wideBullet1";
             wideBullet2Prefab.name = "wideBullet2";
             wideBullet3Prefab.name = "wideBullet3";
+            wideBulletPodPrefab.name = "wideBulletPod";
             // Spawn the bullet on the Clients
             NetworkServer.Spawn(wideBullet0);
             NetworkServer.Spawn(wideBullet1);
             NetworkServer.Spawn(wideBullet2);
             NetworkServer.Spawn(wideBullet3);
+            NetworkServer.Spawn(wideBullet1Pod);
+            NetworkServer.Spawn(wideBullet2Pod);
         }
 
         //Autofire
@@ -377,11 +390,16 @@ public class PlayerController : NetworkBehaviour
             // Create bullets from the prefabs
             GameObject autoBullet1 = (GameObject)LeanPool.Spawn(autoBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject autoBullet2 = (GameObject)LeanPool.Spawn(autoBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject autoBullet1Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+            GameObject autoBullet2Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             autoBullet1Prefab.name = "autoBullet1";
             autoBullet2Prefab.name = "autoBullet2";
+            autoBullet2Prefab.name = "autoBulletPod";
             // Spawn the bullet on the Clients
             NetworkServer.Spawn(autoBullet1);
             NetworkServer.Spawn(autoBullet2);
+            NetworkServer.Spawn(autoBullet1Pod);
+            NetworkServer.Spawn(autoBullet2Pod);
         }
 
         //Sonic Pulse
@@ -399,9 +417,13 @@ public class PlayerController : NetworkBehaviour
         {
             // Create rockets from the prefabs
             GameObject rocket1 = (GameObject)LeanPool.Spawn(rocketPrefab, rocketSpawn.position, rocketSpawn.rotation);
+            GameObject rocket1Pod = (GameObject)LeanPool.Spawn(rocketPrefab, podOneSpawn.position, podOneSpawn.rotation);
+            GameObject rocket2Pod = (GameObject)LeanPool.Spawn(rocketPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             rocketPrefab.name = "rocket1";
             // Spawn the rocket on the Clients
             NetworkServer.Spawn(rocket1);
+            NetworkServer.Spawn(rocket1Pod);
+            NetworkServer.Spawn(rocket2Pod);
         }
     }
 

@@ -129,15 +129,21 @@ MonoBehaviour:
   pointsDoublerPrefab: {fileID: 0}
   defaultBullet1Prefab: {fileID: 64, guid: ae808e93e35962d448590e1bae6b3d76, type: 3}
   defaultBullet2Prefab: {fileID: 62, guid: 48079796279db89438b262984e065c4b, type: 3}
+  defaultBulletPodPrefab: {fileID: 1902243169477457764, guid: 017d237f1fef51348bcb44a2216aeb90,
+    type: 3}
   wideBullet0Prefab: {fileID: 57, guid: 241fa82edbc4ae1448bc680b01e4d077, type: 3}
   wideBullet1Prefab: {fileID: 59, guid: 4e5db0b941f3dbd439f1c0f3a6ea95b9, type: 3}
   wideBullet2Prefab: {fileID: 54, guid: 1078944bd3fda6548bc475884ee7578e, type: 3}
   wideBullet3Prefab: {fileID: 60, guid: 03c7db5fa645e5b428a1616e030d786f, type: 3}
+  wideBulletPodPrefab: {fileID: 7521892979364595295, guid: 1d0d19feca016cf4183d5bb92cfe9317,
+    type: 3}
   autoBullet1Prefab: {fileID: 3182867336742530349, guid: 1a1afe7bdca8b65489a64120452c44f6,
     type: 3}
   autoBullet2Prefab: {fileID: 1658446132816139165, guid: ca5b2a55432b90146885fd4a02008ae7,
     type: 3}
   blueBulletLightPrefab: {fileID: 1330227213621312901, guid: ededcd2a7a683b549a5209bb7edb4a23,
+    type: 3}
+  autoBulletPodPrefab: {fileID: 3453185745640214856, guid: bdb32975b2b8aeb48b95112ba9f1b220,
     type: 3}
   sonicPrefab: {fileID: 68, guid: 26041501ac3c543469d3b3aa5cc21d50, type: 3}
   rocketPrefab: {fileID: 65, guid: b17cc536f3470c5438562b8af1a6a32e, type: 3}
