@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Lean.Pool;
 
 public class playerPulse : NetworkBehaviour
 {
@@ -25,12 +26,12 @@ public class playerPulse : NetworkBehaviour
         timer -= 3.0f * Time.deltaTime;
         if (timer < 0)
         {
-            Destroy(gameObject);
+            LeanPool.Despawn(gameObject);
         }
 
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
-            Destroy(gameObject);
+            LeanPool.Despawn(gameObject);
         }
     }
 
@@ -52,5 +53,11 @@ public class playerPulse : NetworkBehaviour
                 powerup.powerup += 0.01f;
             }
         }
+    }
+
+    void OnDisable()
+    {
+        transform.localScale = new Vector3(0, 0, 0);
+        timer = 1.0f;
     }
 }

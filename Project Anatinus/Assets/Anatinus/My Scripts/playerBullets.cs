@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Lean.Pool;
 
 
 public class playerBullets : NetworkBehaviour
@@ -25,7 +26,7 @@ public class playerBullets : NetworkBehaviour
 
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
-            Destroy(gameObject);
+            LeanPool.Despawn(gameObject);
         }
     }
 
@@ -39,15 +40,20 @@ public class playerBullets : NetworkBehaviour
         if (health != null)
         {
             health.TakeDamage(dmg);
-            Destroy(gameObject);
+            LeanPool.Despawn(gameObject);
         }
         if (powerup != null)
         {
             if (powerup.timer < 0.3)
             {
                 powerup.powerup += 0.01f;
-                Destroy(gameObject);
+                LeanPool.Despawn(gameObject);
             }
         }
+    }
+
+    void OnDisable()
+    {
+        timer = 1.0f;
     }
 }

@@ -3,16 +3,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Lean.Pool;
 
 public class PlayerController : NetworkBehaviour
 {
+    [SyncVar]
+    public int alive = 1;
+    [SyncVar]
+    public int lives = 4;
+    [SyncVar]
+    public float respawnTimer = 1.5f;
+
+
+    [SyncVar]
+    public int powerup = 0;
+    [SyncVar]
+    public int powerupTimer = 0;
+
+
+    [SyncVar]
+    public int weaponPods = 0;
+    [SyncVar]
+    public int pointsDoubler = 0;
+
+
+    [SyncVar]
+    public float dmg;
+    [SyncVar]
+    public float speed = 10.0f;
+    [SyncVar]
+    int tilt = 0;
+    [SyncVar]
+    public float animationTimer = 2.5f;
+
+
+    public Transform bulletSpawn;
+    public Transform rocketSpawn;
+    public Transform centerOrbit;
+    public Transform podOneSpawn;
+    public Transform podTwoSpawn;
+
+
+    public GameObject weaponPodsPrefab;
+    public GameObject pointsDoublerPrefab;
+
+
     public GameObject defaultBullet1Prefab;
     public GameObject defaultBullet2Prefab;
+
 
     public GameObject wideBullet0Prefab;
     public GameObject wideBullet1Prefab;
     public GameObject wideBullet2Prefab;
     public GameObject wideBullet3Prefab;
+
+
+    public GameObject autoBullet1Prefab;
+    public GameObject autoBullet2Prefab;
+    public GameObject blueBulletLightPrefab;
+
+
+    public GameObject sonicPrefab;
+
+
+    public GameObject rocketPrefab;
+    private GameObject rocket;
+
+
+    public GameObject lightningPrefab;
+
 
     [SyncVar]
     public int autofireBulletCount;
@@ -20,8 +79,14 @@ public class PlayerController : NetworkBehaviour
     public float autofireTimerMax = 1;
     [SyncVar]
     public float autofireTimer = 1;
+    [SyncVar]
+    public int autofireLightCount;
+    [SyncVar]
+    public float autofireLightTimerMax = 1;
+    [SyncVar]
+    public float autofireLightTimer = 1;
 
-    public GameObject sonicPrefab;
+
     [SyncVar]
     public int pulseCountMax = 3;
     [SyncVar]
@@ -30,27 +95,6 @@ public class PlayerController : NetworkBehaviour
     public float pulseTimerMax = 0.5f;
     [SyncVar]
     public float pulseTimer;
-
-    public GameObject rocketPrefab;
-    private GameObject rocket;
-
-    public GameObject lightningPrefab;
-
-    public Transform bulletSpawn;
-    public Transform rocketSpawn;
-
-    [SyncVar]
-    public int powerup = 0;
-    [SyncVar]
-    public int powerupTimer = 0;
-    [SyncVar]
-    public float animationTimer = 2.5f;
-    [SyncVar]
-    public float speed = 10.0f;
-    [SyncVar]
-    public float dmg;
-    [SyncVar]
-    int tilt = 0;
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,176 +113,223 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        //TESTINGvvv
-        if (isServer)
+        if (alive > 0)
         {
-            Debug.Log("I'm the server");
-        }
-        if (!isServer)
-        {
-            Debug.Log("I'm the client");
-        }
-        //TESTING^^^
+                    //TESTINGvvv
+                    if (isServer)
+                    {
+                        Debug.Log("I'm the server");
+                    }
+                    if (!isServer)
+                    {
+                        Debug.Log("I'm the client");
+                    }
+                    //TESTING^^^
 
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            powerup = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            powerup = 1;
-        }
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            powerup = 2;
-        }
-        if (Input.GetKeyDown(KeyCode.F4))
-        {
-            powerup = 3;
-        }
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            powerup = 4;
-        }
-        if (Input.GetKeyDown(KeyCode.F6))
-        {
-            powerup = 5;
-        }
-
-        //ship animation tilts
-        if (animationTimer > 0.0f & animationTimer < 1.0f)
-        { tilt = -30; }
-
-        if (animationTimer > 1.0f & animationTimer < 2.0f)
-        { tilt = -15; }
-
-        if (animationTimer > 2.0f & animationTimer < 3.0f)
-        { tilt = 0; }
-
-        if (animationTimer > 3.0f & animationTimer < 4.0f)
-        { tilt = 15; }
-
-        if (animationTimer > 4.0f & animationTimer < 5.0f)
-        { tilt = 30; }
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Move up
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(0, speed * Time.deltaTime, 0);
-
-            //tilt the ship up when the up key is pressed
-            if (animationTimer < 5.0f)
-            { animationTimer += 10.0f * Time.deltaTime; }
-        }
-
-        //tilt the ship back down when up key is released
-        if (!Input.GetKey(KeyCode.UpArrow) & !Input.GetKey(KeyCode.DownArrow) & animationTimer > 3.0f)
-        {
-            animationTimer -= 10.0f * Time.deltaTime;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Move left
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(-speed * Time.deltaTime, 0, 0);
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Move down
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(0, -speed * Time.deltaTime, 0);
-
-            //tilt the ship down when the down key is pressed
-            if (animationTimer > 0)
-            { animationTimer -= 10.0f * Time.deltaTime; }
-        }
-
-        //tilt the ship back up when the down key is released
-        if (!Input.GetKey(KeyCode.DownArrow) & !Input.GetKey(KeyCode.UpArrow) & animationTimer < 2.0f)
-        {
-            animationTimer += 10.0f * Time.deltaTime;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Move right
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(speed * Time.deltaTime, 0, 0);
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        //apply tilts
-        transform.eulerAngles = new Vector3(tilt, 0, 0);
-
-        //lock onto axises listed below
-        Vector3 pos = transform.position;
-        /*Z axis*/
-        pos.z = 0;
-        transform.position = pos;
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Execute the [Command] to fire a bullet
-        if (Input.GetKeyDown(KeyCode.RightControl))
-        {
-            //Anything else
-            if (powerup != 2 & powerup != 3)
+            if (Input.GetKeyDown(KeyCode.F1))
             {
-                CmdFire();
+                powerup = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                powerup = 1;
+            }
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                powerup = 2;
+            }
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                powerup = 3;
+            }
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                powerup = 4;
+            }
+            if (Input.GetKeyDown(KeyCode.F6))
+            {
+                powerup = 5;
             }
 
-            //Autofire
-            if (powerup > 1 & powerup < 3)
+            //ship animation tilts
+            if (animationTimer > 0.0f & animationTimer < 1.0f)
+            { tilt = -30; }
+
+            if (animationTimer > 1.0f & animationTimer < 2.0f)
+            { tilt = -15; }
+
+            if (animationTimer > 2.0f & animationTimer < 3.0f)
+            { tilt = 0; }
+
+            if (animationTimer > 3.0f & animationTimer < 4.0f)
+            { tilt = 15; }
+
+            if (animationTimer > 4.0f & animationTimer < 5.0f)
+            { tilt = 30; }
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Move up
+            if (Input.GetKey(KeyCode.UpArrow))
             {
-                if (autofireBulletCount < 5)
+                transform.Translate(0, speed * Time.deltaTime, 0);
+
+                //tilt the ship up when the up key is pressed
+                if (animationTimer < 5.0f)
+                { animationTimer += 10.0f * Time.deltaTime; }
+            }
+
+            //tilt the ship back down when up key is released
+            if (!Input.GetKey(KeyCode.UpArrow) & !Input.GetKey(KeyCode.DownArrow) & animationTimer > 3.0f)
+            {
+                animationTimer -= 10.0f * Time.deltaTime;
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Move left
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Translate(-speed * Time.deltaTime, 0, 0);
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Move down
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.Translate(0, -speed * Time.deltaTime, 0);
+
+                //tilt the ship down when the down key is pressed
+                if (animationTimer > 0)
+                { animationTimer -= 10.0f * Time.deltaTime; }
+            }
+
+            //tilt the ship back up when the down key is released
+            if (!Input.GetKey(KeyCode.DownArrow) & !Input.GetKey(KeyCode.UpArrow) & animationTimer < 2.0f)
+            {
+                animationTimer += 10.0f * Time.deltaTime;
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Move right
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Translate(speed * Time.deltaTime, 0, 0);
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            //apply tilts
+            transform.eulerAngles = new Vector3(tilt, 0, 0);
+
+            //lock onto axises listed below
+            Vector3 pos = transform.position;
+            /*Z axis*/
+            pos.z = 0;
+            transform.position = pos;
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Execute the [Command] to fire a bullet
+            if (Input.GetKeyDown(KeyCode.RightControl))
+            {
+                //Autofire
+                if (powerup > 1 & powerup < 3)
                 {
-                    autofireBulletCount += 5;
+                    if (autofireBulletCount < 5)
+                    {
+                        autofireBulletCount += 5;
+                    }
+                    if (autofireLightCount < 3)
+                    {
+                        autofireLightCount += 3;
+                    }
                 }
-            }
 
-            //Sonic Pulse
-            if (powerup > 2 & powerup < 4)
-            {
-                if (pulseCount != 0)
+                //Sonic Pulse
+                if (powerup > 2 & powerup < 4)
                 {
-                    pulseCount -= 1;
+                    if (pulseCount != 0)
+                    {
+                        pulseCount -= 1;
+                        CmdFire();
+                    }
+                }
+
+                //Anything else
+                if (powerup != 2 & powerup != 3)
+                {
                     CmdFire();
                 }
             }
-        }
 
-        //Keep Autofire refilled
-        if (autofireTimer < autofireTimerMax * 2)
-        {
-            autofireTimer += 20.0f * Time.deltaTime;
-        }
-        if (autofireTimer > autofireTimerMax & autofireBulletCount != 0)
-        {
-            autofireTimer = 0;
-            autofireBulletCount -= 1;
-            CmdFire();
-        }
-
-        //Refill Sonic Pulse
-        if (pulseTimer < pulseTimerMax & pulseCount != pulseCountMax)
-        {
-            pulseTimer += 1.0f * Time.deltaTime;
-        }
-        if (pulseTimer > pulseTimerMax & pulseCount != 3)
-        {
-            pulseTimer = 0;
-            pulseCount += 1;
-        }
-
-        //Rocketman
-        if (Input.GetKeyUp(KeyCode.RightControl))
-        {
-            if (powerup > 3 & powerup < 5)
+            //Keep Autofire refilled
+            if (autofireTimer < autofireTimerMax * 2)
             {
+                autofireTimer += 20.0f * Time.deltaTime;
+            }
+            if (autofireTimer > autofireTimerMax & autofireBulletCount != 0)
+            {
+                autofireTimer = 0;
+                autofireBulletCount -= 1;
+                CmdFire();
+            }
+
+            //Keep Autofire lit bro
+            if (autofireLightTimer < autofireLightTimerMax * 2)
+            {
+                autofireLightTimer += 10.0f * Time.deltaTime;
+            }
+            if (autofireLightTimer > autofireLightTimerMax & autofireLightCount != 0)
+            {
+                autofireLightTimer = 0;
+                autofireLightCount -= 1;
                 CmdLite();
+            }
+
+            //Refill Sonic Pulse
+            if (pulseTimer < pulseTimerMax & pulseCount != pulseCountMax)
+            {
+                pulseTimer += 1.0f * Time.deltaTime;
+            }
+            if (pulseTimer > pulseTimerMax & pulseCount != 3)
+            {
+                pulseTimer = 0;
+                pulseCount += 1;
+            }
+
+            //Rocketman
+            if (Input.GetKeyUp(KeyCode.RightControl))
+            {
+                if (powerup > 3 & powerup < 5)
+                {
+                    CmdLite();
+                }
+            }
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Weapon Pods
+        if (weaponPods > 0)
+        {
+            weaponPodsPrefab.SetActive(true);
+        }
+        else
+        {
+            weaponPodsPrefab.SetActive(false);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Respawn Ship
+        if (alive < 1 & lives > 0)
+        {
+            respawnTimer -= 1.0f * Time.deltaTime;
+            if (respawnTimer < 0)
+            {
+                alive = 1;
+                lives -= 1;
+
+                powerup = 0;
+                weaponPods = 0;
+                pointsDoubler = 0;
+
+                respawnTimer = 1.5f;
             }
         }
     }
@@ -252,8 +343,8 @@ public class PlayerController : NetworkBehaviour
         if (powerup > -1 & powerup < 1)
         {
             // Create bullets from the prefabs
-            GameObject bullet1 = (GameObject)Instantiate(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject bullet2 = (GameObject)Instantiate(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet1 = (GameObject)LeanPool.Spawn(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet2 = (GameObject)LeanPool.Spawn(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
             defaultBullet1Prefab.name = "bullet1";
             defaultBullet2Prefab.name = "bullet2";
             // Spawn the bullet on the Clients
@@ -265,50 +356,50 @@ public class PlayerController : NetworkBehaviour
         if (powerup > 0 & powerup < 2)
         {
             // Create bullets from the prefabs
-            GameObject bullet0 = (GameObject)Instantiate(wideBullet0Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject bullet1 = (GameObject)Instantiate(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject bullet2 = (GameObject)Instantiate(wideBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject bullet3 = (GameObject)Instantiate(wideBullet3Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            wideBullet0Prefab.name = "bullet0";
-            wideBullet1Prefab.name = "bullet1";
-            wideBullet2Prefab.name = "bullet2";
-            wideBullet3Prefab.name = "bullet3";
+            GameObject wideBullet0 = (GameObject)LeanPool.Spawn(wideBullet0Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet1 = (GameObject)LeanPool.Spawn(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet2 = (GameObject)LeanPool.Spawn(wideBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet3 = (GameObject)LeanPool.Spawn(wideBullet3Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            wideBullet0Prefab.name = "wideBullet0";
+            wideBullet1Prefab.name = "wideBullet1";
+            wideBullet2Prefab.name = "wideBullet2";
+            wideBullet3Prefab.name = "wideBullet3";
             // Spawn the bullet on the Clients
-            NetworkServer.Spawn(bullet0);
-            NetworkServer.Spawn(bullet1);
-            NetworkServer.Spawn(bullet2);
-            NetworkServer.Spawn(bullet3);
+            NetworkServer.Spawn(wideBullet0);
+            NetworkServer.Spawn(wideBullet1);
+            NetworkServer.Spawn(wideBullet2);
+            NetworkServer.Spawn(wideBullet3);
         }
 
         //Autofire
         if (powerup > 1 & powerup < 3)
         {
             // Create bullets from the prefabs
-            GameObject bullet1 = (GameObject)Instantiate(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject bullet2 = (GameObject)Instantiate(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            defaultBullet1Prefab.name = "bullet1";
-            defaultBullet2Prefab.name = "bullet2";
+            GameObject autoBullet1 = (GameObject)LeanPool.Spawn(autoBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject autoBullet2 = (GameObject)LeanPool.Spawn(autoBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            autoBullet1Prefab.name = "autoBullet1";
+            autoBullet2Prefab.name = "autoBullet2";
             // Spawn the bullet on the Clients
-            NetworkServer.Spawn(bullet1);
-            NetworkServer.Spawn(bullet2);
+            NetworkServer.Spawn(autoBullet1);
+            NetworkServer.Spawn(autoBullet2);
         }
 
         //Sonic Pulse
         if (powerup > 2 & powerup < 4)
         {
             // Create pulses from the prefabs
-            GameObject pulse1 = (GameObject)Instantiate(sonicPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject pulse1 = (GameObject)LeanPool.Spawn(sonicPrefab, bulletSpawn.position, bulletSpawn.rotation);
             sonicPrefab.name = "pulse1";
             // Spawn the pulse on the Clients
             NetworkServer.Spawn(pulse1);
         }
-
+        
         //Rockets
         if (powerup > 3 & powerup < 5)
         {
             // Create rockets from the prefabs
-            GameObject rocket1 = (GameObject)Instantiate(rocketPrefab, rocketSpawn.position, rocketSpawn.rotation);
-            rocketPrefab.name = "rocket1" + GetInstanceID();
+            GameObject rocket1 = (GameObject)LeanPool.Spawn(rocketPrefab, rocketSpawn.position, rocketSpawn.rotation);
+            rocketPrefab.name = "rocket1";
             // Spawn the rocket on the Clients
             NetworkServer.Spawn(rocket1);
         }
@@ -318,12 +409,25 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdLite()
     {
-        rocket = GameObject.Find("rocket1" + GetInstanceID() + "(Clone)");
-        if (rocket != null)
+        //Lights for Autofire
+        if (powerup > 1 & powerup < 3)
         {
-            playerRockets rocket1 = rocket.GetComponent<playerRockets>();
-            rocket1.lit = 1;
-            rocket1.name = "rocket1Lit";
+            GameObject bulletLight1 = (GameObject)LeanPool.Spawn(blueBulletLightPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            blueBulletLightPrefab.name = "bulletLight1";
+            // Spawn the bullet on the Clients
+            NetworkServer.Spawn(bulletLight1);
+        }
+
+        //Lights up Rockets
+        if (powerup > 3 & powerup < 5)
+        {
+            rocket = GameObject.Find("rocket1");
+            if (rocket != null)
+            {
+                playerRockets rocket1 = rocket.GetComponent<playerRockets>();
+                rocket1.lit = 1;
+                rocket1.name = "rocket1Lit";
+            }
         }
     }
 
@@ -337,8 +441,9 @@ public class PlayerController : NetworkBehaviour
         if (health != null)
         {
             health.TakeDamage(dmg);
-            Destroy(gameObject);
+            alive = 0;
         }
+
         if (powerupStar != null)
         {
             if (powerupStar.powerup > 0 & powerupStar.powerup < 1.5)
