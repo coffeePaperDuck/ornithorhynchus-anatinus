@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   vertSpeed: 0
+  zSpeed: 0
   timer: 1
   rotation: 0
   dmg: 1.7

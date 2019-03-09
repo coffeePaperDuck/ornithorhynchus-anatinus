@@ -7,15 +7,22 @@ using Lean.Pool;
 
 public class playerBullets : NetworkBehaviour
 {
+    [SyncVar]
     public float speed = 20.0f;
+    [SyncVar]
     public float vertSpeed;
+    [SyncVar]
+    public float zSpeed;
+    [SyncVar]
     public float timer = 1.0f;
+    [SyncVar]
     public float rotation;
+    [SyncVar]
     public float dmg;
 
     void Update()
     {
-        transform.Translate(speed * Time.deltaTime, vertSpeed * Time.deltaTime, 0);
+        transform.Translate(speed * Time.deltaTime, vertSpeed * Time.deltaTime, zSpeed * Time.deltaTime);
         transform.eulerAngles = new Vector3(0, 0, rotation);
 
         timer -= 5.0f * Time.deltaTime;
@@ -27,6 +34,15 @@ public class playerBullets : NetworkBehaviour
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
             LeanPool.Despawn(gameObject);
+        }
+
+        if (transform.position.z > 0)
+        {
+            zSpeed = -1f;
+        }
+        if (transform.position.z < 0)
+        {
+            zSpeed = 1f;
         }
     }
 

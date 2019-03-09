@@ -14,6 +14,8 @@ public class playerRockets : NetworkBehaviour
     [SyncVar]
     public float vertSpeed;
     [SyncVar]
+    public float zSpeed;
+    [SyncVar]
     public float timer = 0.0f;
     [SyncVar]
     public float dmg;
@@ -34,7 +36,7 @@ public class playerRockets : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(speed * Time.deltaTime, vertSpeed * Time.deltaTime, 0);
+        transform.Translate(speed * Time.deltaTime, vertSpeed * Time.deltaTime, zSpeed * Time.deltaTime);
         transform.eulerAngles = new Vector3(0, 0, 0);
 
         if (lit == 1)
@@ -69,6 +71,15 @@ public class playerRockets : NetworkBehaviour
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
             LeanPool.Despawn(gameObject);
+        }
+
+        if (transform.position.z > 0)
+        {
+            zSpeed = -1f;
+        }
+        if (transform.position.z < 0)
+        {
+            zSpeed = 1f;
         }
     }
 
