@@ -47,7 +47,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject weaponPodsPrefab;
     public GameObject pointsDoublerPrefab;
 
-
+    //FUCKADOOBITCH
     public GameObject defaultBullet1Prefab;
     public GameObject defaultBullet2Prefab;
     public GameObject defaultBulletPodPrefab;
@@ -116,6 +116,7 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
+        //Execute the code below if alive
         if (alive > 0)
         {
                     //TESTINGvvv
@@ -170,54 +171,67 @@ public class PlayerController : NetworkBehaviour
             if (animationTimer > 4.0f & animationTimer < 5.0f)
             { tilt = 30; }
 
+            //boundaries
+            //top 7.13
+            //left -9.29
+            //right 9.47
+            //bottom -7.07
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Move up
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                transform.Translate(0, speed * Time.deltaTime, 0);
+                if (transform.position.y < 7.13)
+                {
+                    transform.Translate(0, speed * Time.deltaTime, 0);
+                }
 
                 //tilt the ship up when the up key is pressed
                 if (animationTimer < 5.0f)
                 { animationTimer += 10.0f * Time.deltaTime; }
             }
-
             //tilt the ship back down when up key is released
             if (!Input.GetKey(KeyCode.UpArrow) & !Input.GetKey(KeyCode.DownArrow) & animationTimer > 3.0f)
             {
                 animationTimer -= 10.0f * Time.deltaTime;
             }
 
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Move left
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) & transform.position.x > -9.29)
             {
-                transform.Translate(-speed * Time.deltaTime, 0, 0);
+                    transform.Translate(-speed * Time.deltaTime, 0, 0);
             }
+
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Move down
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                transform.Translate(0, -speed * Time.deltaTime, 0);
+                if (transform.position.y > -7.07)
+                {
+                    transform.Translate(0, -speed * Time.deltaTime, 0);
+                }
 
                 //tilt the ship down when the down key is pressed
                 if (animationTimer > 0)
                 { animationTimer -= 10.0f * Time.deltaTime; }
             }
-
             //tilt the ship back up when the down key is released
             if (!Input.GetKey(KeyCode.DownArrow) & !Input.GetKey(KeyCode.UpArrow) & animationTimer < 2.0f)
             {
                 animationTimer += 10.0f * Time.deltaTime;
             }
 
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Move right
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) & transform.position.x < 9.47)
             {
-                transform.Translate(speed * Time.deltaTime, 0, 0);
+                    transform.Translate(speed * Time.deltaTime, 0, 0);
             }
+
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             //apply tilts
