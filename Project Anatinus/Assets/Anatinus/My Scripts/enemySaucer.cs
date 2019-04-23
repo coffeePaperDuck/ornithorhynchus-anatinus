@@ -6,14 +6,20 @@ using UnityEngine.Networking;
 
 public class enemySaucer : NetworkBehaviour
 {
+    public GameObject gunPrefab;
+
     [SyncVar]
-    public float animationTimer = 12.0f;
+    public float animationTimer = 12;
     [SyncVar]
-    public float maxSpeed = 10.0f;
+    public float shootingTimer = 2;
+    [SyncVar]
+    public float maxSpeed = 10;
     [SyncVar]
     float speed;
     [SyncVar]
-    int tilt = 0;
+    public float xSpeed = -10;
+    [SyncVar]
+    public int tilt = 0;
 
 
     // Use this for initialization
@@ -25,62 +31,68 @@ public class enemySaucer : NetworkBehaviour
     // Update is called once per tilt
     void Update()
     {
-        //Count up timer
-        animationTimer += 10.0f * Time.deltaTime;
+        //Count timers
+        animationTimer += 10 * Time.deltaTime;
+        shootingTimer -= 1 * Time.deltaTime;
+
+        //shooting
+        if (shootingTimer < 0)
+        {
+        }
 
         //tilts
-        if (animationTimer > 1.0f)
+        if (animationTimer > 1)
         {
             tilt = 15;
             speed = maxSpeed / 2;
         }
 
-        if (animationTimer > 2.0f)
+        if (animationTimer > 2)
         {
             tilt = 30;
             speed = maxSpeed;
         }
 
-        if (animationTimer > 5.0f)
+        if (animationTimer > 5)
         {
             tilt = 15;
             speed = maxSpeed / 2;
         }
 
-        if (animationTimer > 6.0f)
+        if (animationTimer > 6)
         {
             tilt = 0;
-            speed = 0.0f;
+            speed = 0;
         }
 
-        if (animationTimer > 7.0f)
+        if (animationTimer > 7)
         {
             tilt = -15;
             speed = -maxSpeed / 2;
         }
 
-        if (animationTimer > 8.0f)
+        if (animationTimer > 8)
         {
             tilt = -30;
             speed = -maxSpeed;
         }
 
-        if (animationTimer > 11.0f)
+        if (animationTimer > 11)
         {
             tilt = -15;
             speed = -maxSpeed / 2;
         }
 
-        if (animationTimer > 12.0f)
+        if (animationTimer > 12)
         {
             tilt = 0;
-            speed = 0.0f;
-            animationTimer = 0.0f;
+            speed = 0;
+            animationTimer = 0;
         }
 
 
         //apply tilts
-        transform.Translate(0, speed * Time.deltaTime, 0);
+        transform.Translate(xSpeed * Time.deltaTime, speed * Time.deltaTime, 0);
         transform.eulerAngles = new Vector3(tilt, 0, 0);
         Vector3 pos = transform.position;
         pos.z = 0;

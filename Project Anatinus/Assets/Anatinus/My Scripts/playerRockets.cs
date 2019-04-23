@@ -108,6 +108,7 @@ public class playerRockets : NetworkBehaviour
     void OnDisable()
     {
         this.name = "rocket1";
+
         GetComponent<MeshFilter>().mesh = rocket5Prefab;
         lit = 0;
         timer = 0.0f;

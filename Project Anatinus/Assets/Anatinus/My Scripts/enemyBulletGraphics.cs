@@ -4,8 +4,10 @@ public class enemyBulletGraphics : MonoBehaviour
 {
     // Blends between two materials
 
+    public bool deflected = false;
     public Material material1;
     public Material material2;
+    public Material material3;
     public float duration = 1.0f;
     Renderer rend;
 
@@ -20,7 +22,14 @@ public class enemyBulletGraphics : MonoBehaviour
     void Update()
     {
         // ping-pong between the materials over the duration
-        float lerp = Mathf.PingPong(Time.time, duration) / duration;
-        rend.material.Lerp(material1, material2, lerp);
+        if (deflected == false)
+        {
+            float lerp = Mathf.PingPong(Time.time, duration) / duration;
+            rend.material.Lerp(material1, material2, lerp);
+        }
+        else
+        {
+            rend.material = material3;
+        }
     }
 }

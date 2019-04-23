@@ -39,15 +39,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111992327964170703}
+  - component: {fileID: 5314884868969933716}
   - component: {fileID: 1111992327964170688}
   - component: {fileID: 1111992327964170689}
   - component: {fileID: 1111992327964170690}
   - component: {fileID: 1111992327964170700}
-  - component: {fileID: 5314884868969933716}
   - component: {fileID: 1111992327964170702}
   - component: {fileID: 1111992327964170701}
   m_Layer: 16
-  m_Name: Crate
+  m_Name: crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,6 +68,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5314884868969933716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111992327964170692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e609305ac3b43ea4ba3169d2f15bb77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 1111992326785262268}
+  weaponPodsPrefab: {fileID: 5541485941753750366, guid: 812191adf6789164697987b063b61fc3,
+    type: 3}
+  pointsDoublerPrefab: {fileID: 0}
+  coinsPrefab: {fileID: 0}
+  powerupPrefab: {fileID: 5985505016797894815, guid: e1715d4976345514bbf5f31a670dd8a9,
+    type: 3}
+  powerup1Prefab: {fileID: 0}
+  powerup2Prefab: {fileID: 0}
+  powerup3Prefab: {fileID: 0}
+  powerup4Prefab: {fileID: 0}
+  powerup5Prefab: {fileID: 0}
+  minesPrefab: {fileID: 0}
+  weaponPods: 0
+  pointsDoubler: 0
+  coins: 0
+  powerup: 0
+  powerup1: 0
+  powerup2: 0
+  powerup3: 0
+  powerup4: 0
+  powerup5: 0
+  mines: 0
 --- !u!33 &1111992327964170688
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -138,42 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3431809a6f31184080ce7e215a0a7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
+  maxHealth: 0
   currentHealth: 11
---- !u!114 &5314884868969933716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111992327964170692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e609305ac3b43ea4ba3169d2f15bb77f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawn: {fileID: 1111992326785262268}
-  weaponPodsPrefab: {fileID: 0}
-  pointsDoublerPrefab: {fileID: 0}
-  coinsPrefab: {fileID: 0}
-  powerupPrefab: {fileID: 5985505016797894815, guid: e1715d4976345514bbf5f31a670dd8a9,
-    type: 3}
-  powerup1Prefab: {fileID: 0}
-  powerup2Prefab: {fileID: 0}
-  powerup3Prefab: {fileID: 0}
-  powerup4Prefab: {fileID: 0}
-  powerup5Prefab: {fileID: 0}
-  minesPrefab: {fileID: 0}
-  weaponPods: 0
-  pointsDoubler: 0
-  coins: 0
-  powerup: 0
-  powerup1: 0
-  powerup2: 0
-  powerup3: 0
-  powerup4: 0
-  powerup5: 0
-  mines: 0
 --- !u!54 &1111992327964170702
 Rigidbody:
   m_ObjectHideFlags: 0

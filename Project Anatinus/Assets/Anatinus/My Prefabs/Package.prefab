@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3431809a6f31184080ce7e215a0a7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
+  maxHealth: 0
   currentHealth: 1
 --- !u!114 &814198883431853892
 MonoBehaviour:
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 814198883431853890}
   packagePrefab: {fileID: 297812289925859442}
+  speed: 1
 --- !u!1001 &814198884439249334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,90 +255,90 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5314884868969933716, guid: 2308effe0328b894f9a82e5f5e32aba1,
-        type: 3}
-      propertyPath: powerup
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i0
-      value: 35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i1
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i2
-      value: 239
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i3
-      value: 254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i4
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i5
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i6
-      value: 184
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i7
-      value: 148
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i8
-      value: 249
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i9
-      value: 168
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i10
-      value: 46
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i11
-      value: 95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i12
-      value: 94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i13
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i14
-      value: 171
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i15
-      value: 161
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314884868969933716, guid: 2308effe0328b894f9a82e5f5e32aba1,
+        type: 3}
+      propertyPath: powerup
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2308effe0328b894f9a82e5f5e32aba1, type: 3}

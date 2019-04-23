@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camera : MonoBehaviour
+public class camera: MonoBehaviour
 {
     //public float y;
     public Transform player;

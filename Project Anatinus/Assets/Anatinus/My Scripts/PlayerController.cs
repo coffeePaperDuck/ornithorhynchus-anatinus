@@ -70,7 +70,11 @@ public class PlayerController : NetworkBehaviour
 
 
     public GameObject rocketPrefab;
+    public GameObject rocketPod1Prefab;
+    public GameObject rocketPod2Prefab;
     private GameObject rocket;
+    private GameObject rocketPod1;
+    private GameObject rocketPod2;
 
 
     public GameObject lightningPrefab;
@@ -179,12 +183,9 @@ public class PlayerController : NetworkBehaviour
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Move up
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) & transform.position.y < 7.13)
             {
-                if (transform.position.y < 7.13)
-                {
-                    transform.Translate(0, speed * Time.deltaTime, 0);
-                }
+                transform.Translate(0, speed * Time.deltaTime, 0);
 
                 //tilt the ship up when the up key is pressed
                 if (animationTimer < 5.0f)
@@ -207,12 +208,9 @@ public class PlayerController : NetworkBehaviour
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Move down
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow) & transform.position.y > -7.07)
             {
-                if (transform.position.y > -7.07)
-                {
-                    transform.Translate(0, -speed * Time.deltaTime, 0);
-                }
+                transform.Translate(0, -speed * Time.deltaTime, 0);
 
                 //tilt the ship down when the down key is pressed
                 if (animationTimer > 0)
@@ -248,7 +246,7 @@ public class PlayerController : NetworkBehaviour
             if (Input.GetKeyDown(KeyCode.RightControl))
             {
                 //Autofire
-                if (powerup > 1 & powerup < 3)
+                if (powerup == 2)
                 {
                     if (autofireBulletCount < 5)
                     {
@@ -261,7 +259,7 @@ public class PlayerController : NetworkBehaviour
                 }
 
                 //Sonic Pulse
-                if (powerup > 2 & powerup < 4)
+                if (powerup == 3)
                 {
                     if (pulseCount != 0)
                     {
@@ -302,20 +300,21 @@ public class PlayerController : NetworkBehaviour
             }
 
             //Refill Sonic Pulse
-            if (pulseTimer < pulseTimerMax & pulseCount != pulseCountMax)
+            if (pulseCount != pulseCountMax)
             {
                 pulseTimer += 1.0f * Time.deltaTime;
             }
-            if (pulseTimer > pulseTimerMax & pulseCount != 3)
+            if (pulseTimer > pulseTimerMax & pulseCount != pulseCountMax)
             {
                 pulseTimer = 0;
                 pulseCount += 1;
+
             }
 
             //Rocketman
             if (Input.GetKeyUp(KeyCode.RightControl))
             {
-                if (powerup > 3 & powerup < 5)
+                if (powerup == 4)
                 {
                     CmdLite();
                 }
@@ -323,7 +322,7 @@ public class PlayerController : NetworkBehaviour
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         // Weapon Pods
-        if (weaponPods > 0)
+        if (weaponPods == 1)
         {
             weaponPodsPrefab.SetActive(true);
         }
@@ -357,67 +356,85 @@ public class PlayerController : NetworkBehaviour
     void CmdFire()
     {
         //Default
-        if (powerup > -1 & powerup < 1)
+        if (powerup == 0)
         {
             // Create bullets from the prefabs
             GameObject bullet1 = (GameObject)LeanPool.Spawn(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject bullet2 = (GameObject)LeanPool.Spawn(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject bullet1Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
-            GameObject bullet2Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             defaultBullet1Prefab.name = "bullet1";
             defaultBullet2Prefab.name = "bullet2";
-            defaultBulletPodPrefab.name = "bulletPod";
             // Spawn the bullet on the Clients
             NetworkServer.Spawn(bullet1);
             NetworkServer.Spawn(bullet2);
-            NetworkServer.Spawn(bullet1Pod);
-            NetworkServer.Spawn(bullet2Pod);
+
+            // If Weapon Pods are active
+            if (weaponPods == 1)
+            {
+                GameObject bullet1Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject bullet2Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                defaultBulletPodPrefab.name = "bulletPod";
+
+                NetworkServer.Spawn(bullet1Pod);
+                NetworkServer.Spawn(bullet2Pod);
+            }
         }
 
         //Wideshot
-        if (powerup > 0 & powerup < 2)
+        if (powerup == 1)
         {
             // Create bullets from the prefabs
             GameObject wideBullet0 = (GameObject)LeanPool.Spawn(wideBullet0Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject wideBullet1 = (GameObject)LeanPool.Spawn(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject wideBullet2 = (GameObject)LeanPool.Spawn(wideBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject wideBullet3 = (GameObject)LeanPool.Spawn(wideBullet3Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject wideBullet1Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
-            GameObject wideBullet2Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             wideBullet0Prefab.name = "wideBullet0";
             wideBullet1Prefab.name = "wideBullet1";
             wideBullet2Prefab.name = "wideBullet2";
             wideBullet3Prefab.name = "wideBullet3";
-            wideBulletPodPrefab.name = "wideBulletPod";
             // Spawn the bullet on the Clients
             NetworkServer.Spawn(wideBullet0);
             NetworkServer.Spawn(wideBullet1);
             NetworkServer.Spawn(wideBullet2);
             NetworkServer.Spawn(wideBullet3);
-            NetworkServer.Spawn(wideBullet1Pod);
-            NetworkServer.Spawn(wideBullet2Pod);
+
+            // If Weapon Pods are active
+            if (weaponPods == 1)
+            {
+                GameObject wideBullet1Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject wideBullet2Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                wideBulletPodPrefab.name = "wideBulletPod";
+
+                NetworkServer.Spawn(wideBullet1Pod);
+                NetworkServer.Spawn(wideBullet2Pod);
+            }
         }
 
         //Autofire
-        if (powerup > 1 & powerup < 3)
+        if (powerup == 2)
         {
             // Create bullets from the prefabs
             GameObject autoBullet1 = (GameObject)LeanPool.Spawn(autoBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
             GameObject autoBullet2 = (GameObject)LeanPool.Spawn(autoBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject autoBullet1Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
-            GameObject autoBullet2Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             autoBullet1Prefab.name = "autoBullet1";
             autoBullet2Prefab.name = "autoBullet2";
-            autoBullet2Prefab.name = "autoBulletPod";
             // Spawn the bullet on the Clients
             NetworkServer.Spawn(autoBullet1);
             NetworkServer.Spawn(autoBullet2);
-            NetworkServer.Spawn(autoBullet1Pod);
-            NetworkServer.Spawn(autoBullet2Pod);
+
+            // If Weapon Pods are active
+            if (weaponPods == 1)
+            {
+                GameObject autoBullet1Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject autoBullet2Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                autoBulletPodPrefab.name = "autoBulletPod";
+
+                NetworkServer.Spawn(autoBullet1Pod);
+                NetworkServer.Spawn(autoBullet2Pod);
+            }
         }
 
         //Sonic Pulse
-        if (powerup > 2 & powerup < 4)
+        if (powerup == 3)
         {
             // Create pulses from the prefabs
             GameObject pulse1 = (GameObject)LeanPool.Spawn(sonicPrefab, bulletSpawn.position, bulletSpawn.rotation);
@@ -427,17 +444,26 @@ public class PlayerController : NetworkBehaviour
         }
         
         //Rockets
-        if (powerup > 3 & powerup < 5)
+        if (powerup == 4)
         {
             // Create rockets from the prefabs
             GameObject rocket1 = (GameObject)LeanPool.Spawn(rocketPrefab, rocketSpawn.position, rocketSpawn.rotation);
-            GameObject rocket1Pod = (GameObject)LeanPool.Spawn(rocketPrefab, podOneSpawn.position, podOneSpawn.rotation);
-            GameObject rocket2Pod = (GameObject)LeanPool.Spawn(rocketPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
             rocketPrefab.name = "rocket1";
             // Spawn the rocket on the Clients
             NetworkServer.Spawn(rocket1);
-            NetworkServer.Spawn(rocket1Pod);
-            NetworkServer.Spawn(rocket2Pod);
+
+            // If Weapon Pods are active
+            if (weaponPods == 1)
+            {
+                GameObject rocket0 = (GameObject)LeanPool.Spawn(rocketPod1Prefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject rocket2 = (GameObject)LeanPool.Spawn(rocketPod2Prefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                rocketPod1Prefab.name = "rocket0";
+                rocketPod2Prefab.name = "rocket2";
+
+                // Spawn the rocket on the Clients
+                NetworkServer.Spawn(rocket0);
+                NetworkServer.Spawn(rocket2);
+            }
         }
     }
 
@@ -446,7 +472,7 @@ public class PlayerController : NetworkBehaviour
     void CmdLite()
     {
         //Lights for Autofire
-        if (powerup > 1 & powerup < 3)
+        if (powerup == 2)
         {
             GameObject bulletLight1 = (GameObject)LeanPool.Spawn(blueBulletLightPrefab, bulletSpawn.position, bulletSpawn.rotation);
             blueBulletLightPrefab.name = "bulletLight1";
@@ -455,14 +481,36 @@ public class PlayerController : NetworkBehaviour
         }
 
         //Lights up Rockets
-        if (powerup > 3 & powerup < 5)
+        if (powerup == 4)
         {
             rocket = GameObject.Find("rocket1");
+            rocketPod1 = GameObject.Find("rocket0");
+            rocketPod2 = GameObject.Find("rocket2");
             if (rocket != null)
             {
                 playerRockets rocket1 = rocket.GetComponent<playerRockets>();
+
                 rocket1.lit = 1;
-                rocket1.name = "rocket1Lit";
+
+                rocket1.name = "rocketLit1";
+            }
+
+            if (rocketPod1 != null)
+            {
+                playerRocketsPod1 rocket0 = rocketPod1.GetComponent<playerRocketsPod1>();
+
+                rocket0.lit = 1;
+
+                rocket0.name = "rocketLit0";
+            }
+
+            if (rocketPod2 != null)
+            {
+                playerRocketsPod2 rocket2 = rocketPod2.GetComponent<playerRocketsPod2>();
+
+                rocket2.lit = 1;
+
+                rocket2.name = "rocketLit2";
             }
         }
     }
@@ -473,13 +521,22 @@ public class PlayerController : NetworkBehaviour
         GameObject hit = collision.gameObject;
         Health health = hit.GetComponent<Health>();
         powerupStar powerupStar = hit.GetComponent<powerupStar>();
+        pickupPods pickupPods = hit.GetComponent<pickupPods>();
 
+        //Eat shit and die
         if (health != null)
         {
             health.TakeDamage(dmg);
             alive = 0;
         }
 
+        //Get Weapon Pods
+        if (pickupPods != null)
+        {
+            weaponPods = 1;
+        }
+
+        //Get Powerup
         if (powerupStar != null)
         {
             if (powerupStar.powerup > 0 & powerupStar.powerup < 1.5)

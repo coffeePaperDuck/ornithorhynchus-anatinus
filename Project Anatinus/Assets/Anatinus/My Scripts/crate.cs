@@ -44,7 +44,9 @@ public class crate : NetworkBehaviour
     {
         if (weaponPods != 0)
         {
-            Instantiate(weaponPodsPrefab);
+            GameObject pods = (GameObject)LeanPool.Spawn(weaponPodsPrefab, spawn.position, spawn.rotation);
+            weaponPodsPrefab.name = "pods";
+            NetworkServer.Spawn(pods);
         }
 
         if (pointsDoubler != 0)

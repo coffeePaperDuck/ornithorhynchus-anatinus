@@ -5,24 +5,12 @@ using UnityEngine.Networking;
 
 public class Health : NetworkBehaviour
 {
-    public float timer = 10.0f;
-
-    public const float maxHealth = 1;
-    [SyncVar] public float currentHealth = maxHealth;
-
-    void Update()
-    {
-        timer -= 5.0f * Time.deltaTime;
-    }
+    public float maxHealth;
+    [SyncVar] public float currentHealth;
 
 
     public void TakeDamage(float amount)
     {
-        if(!isServer)
-        {
-            return;
-        }
-
         currentHealth -= amount;
         if (currentHealth <= 0)
         {

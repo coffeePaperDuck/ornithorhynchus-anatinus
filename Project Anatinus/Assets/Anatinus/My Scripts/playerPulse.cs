@@ -41,17 +41,34 @@ public class playerPulse : NetworkBehaviour
         GameObject hit = collision.gameObject;
         Health health = hit.GetComponent<Health>();
         powerupStar powerup = hit.GetComponent<powerupStar>();
+        enemyBullet deflectBullet = hit.GetComponent<enemyBullet>();
+        enemyLaser deflectLaser = hit.GetComponent<enemyLaser>();
 
         if (health != null)
         {
             health.TakeDamage(dmg);
         }
+
         if (powerup != null)
         {
             if (powerup.timer < 0.3)
             {
                 powerup.powerup += 0.01f;
             }
+        }
+
+        if (deflectBullet != null)
+        {
+            deflectBullet.deflected = true;
+            deflectBullet.speed -= deflectBullet.originalSpeed * 2;
+            deflectBullet.dmg = deflectBullet.dmg * 2;
+        }
+
+        if (deflectLaser != null)
+        {
+            deflectLaser.deflected = true;
+            deflectLaser.speed -= deflectLaser.originalSpeed * 2;
+            deflectLaser.dmg = deflectLaser.dmg * 2;
         }
     }
 

@@ -53,11 +53,16 @@ public class playerBullets : NetworkBehaviour
         Health health = hit.GetComponent<Health>();
         powerupStar powerup = hit.GetComponent<powerupStar>();
 
+        //if it has health, then taketh away (and despawn bullet)
         if (health != null)
         {
             health.TakeDamage(dmg);
-            LeanPool.Despawn(gameObject);
+            Debug.Log(dmg + " this is 'dmg', from the bullet script");
+            /*LeanPool.*/
+            Destroy(gameObject);
         }
+
+        //if it is a powerup, then power it up (and despawn bullet)
         if (powerup != null)
         {
             if (powerup.timer < 0.3)
