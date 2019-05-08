@@ -4,30 +4,26 @@ using UnityEngine;
 
 public class enemyGoldfish : MonoBehaviour
 {
-    public int maxSpeed = 10;
+    public int maxSpeed;
 
-    public float xSpeed = 0;
+    public float xSpeed;
 
-    public float fleeTimer = 15.0f;
+    public float posX;
 
-    public bool fleeing = false;
-
-    public float posX = 0;
-
-    public float limitX = 0;
-    public float limitX2 = 0;
+    public float limitX;
+    public float limitX2;
 
     // Use this for initialization
     void Start ()
     {
-        if (transform.position.x < this.posX)
+        /*if (transform.position.x < this.posX)
         {
             xSpeed = 10.0f;
         }
         if (transform.position.x > this.posX)
         {
             xSpeed = -10.0f;
-        }
+        }*/
     }
 	
 	// Update is called once per frame
@@ -38,11 +34,11 @@ public class enemyGoldfish : MonoBehaviour
         //Once the enemy has passed the marked position, change speed.
         if (this.transform.position.x < this.posX & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
         {
-            xSpeed += 0.1f;
+            xSpeed += 7 * Time.deltaTime;
         }
         if (this.transform.position.x > this.posX & this.xSpeed > -maxSpeed & this.xSpeed > -this.limitX2)
         {
-            xSpeed -= 0.1f;
+            xSpeed -= 7 * Time.deltaTime;
         }
     }
 }
