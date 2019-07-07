@@ -7,7 +7,7 @@ public class enemyLaser : MonoBehaviour
     public bool deflected = false;
     public float originalSpeed = 20;
     public float speed;
-    public float dmg = 1;
+    public float dmg;
 
     // Start is called before the first frame update
     void Start()

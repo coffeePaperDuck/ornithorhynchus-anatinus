@@ -50,7 +50,7 @@ MonoBehaviour:
   deflected: 0
   originalSpeed: 20
   speed: 0
-  dmg: 8
+  dmg: 4
 --- !u!136 &3896398287828134871
 CapsuleCollider:
   m_ObjectHideFlags: 0

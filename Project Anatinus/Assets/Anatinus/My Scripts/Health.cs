@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class Health : NetworkBehaviour
 {
-    public float maxHealth;
+    [SyncVar] public float maxHealth;
     [SyncVar] public float currentHealth;
 
 

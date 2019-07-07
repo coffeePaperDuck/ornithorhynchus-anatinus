@@ -5,6 +5,14 @@ using Lean.Pool;
 
 public class enemyHammerhead : MonoBehaviour
 {
+    public int maxSpeed;
+    public float xSpeed;
+    public float posX;
+    public float posX2;
+
+    public float limitX;
+    public float limitX2;
+
     public Transform missileLauncher1;
     public Transform missileLauncher2;
     public GameObject missile;
@@ -22,6 +30,24 @@ public class enemyHammerhead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Translate(xSpeed * Time.deltaTime, 0, 0);
+
+        //Once the enemy has passed the marked position, change speed.
+        if (this.transform.position.x < this.posX & this.transform.position.x > this.posX2 & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
+        {
+            xSpeed += 5 * Time.deltaTime;
+        }
+        if (this.transform.position.x < this.posX2 & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
+        {
+            xSpeed += 1 * Time.deltaTime;
+        }
+
+        if (this.transform.position.x > this.posX & this.xSpeed > -maxSpeed & this.xSpeed > -this.limitX2)
+        {
+            xSpeed -= 5 * Time.deltaTime;
+        }
+
+
         timer += timerSpeed * Time.deltaTime;
         if (timer > timerMax)
         {

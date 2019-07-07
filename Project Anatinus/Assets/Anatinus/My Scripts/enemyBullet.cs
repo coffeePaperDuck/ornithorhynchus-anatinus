@@ -8,7 +8,7 @@ public class enemyBullet : MonoBehaviour
     public bool deflected = false;
     public float originalSpeed = 10;
     public float speed;
-    public float dmg = 1;
+    public float dmg;
 
     // Use this for initialization
     void Start()

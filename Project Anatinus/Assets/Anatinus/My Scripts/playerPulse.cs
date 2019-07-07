@@ -10,6 +10,9 @@ public class playerPulse : NetworkBehaviour
     public float dmg;
     public float timer = 1.0f;
 
+    public float colliderTimer;
+    Collider m_Collider;
+
     // Use this for initialization
     void Start()
     {
@@ -60,14 +63,14 @@ public class playerPulse : NetworkBehaviour
         if (deflectBullet != null)
         {
             deflectBullet.deflected = true;
-            deflectBullet.speed -= deflectBullet.originalSpeed * 2;
+            deflectBullet.speed -= deflectBullet.originalSpeed * 1.7f;
             deflectBullet.dmg = deflectBullet.dmg * 2;
         }
 
         if (deflectLaser != null)
         {
             deflectLaser.deflected = true;
-            deflectLaser.speed -= deflectLaser.originalSpeed * 2;
+            deflectLaser.speed -= deflectLaser.originalSpeed * 1.7f;
             deflectLaser.dmg = deflectLaser.dmg * 2;
         }
     }

@@ -95,8 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  dmg: 1.7
+  dmg: 1
   timer: 1
+  colliderTimer: 0
 --- !u!64 &117
 MeshCollider:
   m_ObjectHideFlags: 0
