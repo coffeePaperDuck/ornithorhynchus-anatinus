@@ -20,10 +20,12 @@ public class PlayerController : MonoBehaviour
     Vector3 squishedScale;
 
     private Quaternion _targetRotation = Quaternion.identity;
+    private Quaternion _currentRotation = Quaternion.identity;
 
     public void SetBlendedEulerAngles(Vector3 angles)
     {
-        _targetRotation = Quaternion.Euler(0,0,0);
+        _targetRotation = Quaternion.EulerAngles(0,0,0);
+        _currentRotation = Quaternion.EulerAngles(parent.transform.rotation.x, parent.transform.rotation.y, parent.transform.rotation.z);
     }
 
     // Start is called before the first frame update
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
         if (jumpable == true)
         {
             //transform.rotation = Quaternion.Euler(0, 0, 0);
-            //parent.transform.rotation = Quaternion.Euler(0, 0, 0);
+            parent.transform.rotation = Quaternion.Slerp(_currentRotation, _targetRotation, 0.1f * Time.deltaTime);
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         // Move up
