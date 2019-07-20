@@ -6,16 +6,16 @@ SketchUpImporter:
   selectedNodes: 0000000001000000
   assetHash:
     serializedVersion: 2
-    Hash: 2a8e7e362bbb4dba312f0b531ef53f8e
+    Hash: 472a69368f16252ebd1436c26de0117c
   longitude: -105.242139
   latitude: 40.018309
   northCorrection: -0
   fileUnit: 0
   sketchUpImportData:
     defaultCamera:
-      position: {x: 5.1714664, y: 0.6612328, z: -0.40837866}
-      lookAt: {x: -19.035603, y: -3.0888805, z: 1.0529019}
-      up: {x: -0.15254258, y: 0.988254, z: 0.009208364}
+      position: {x: 0.43088368, y: -2.126764, z: -0.06275527}
+      lookAt: {x: -4.9523635, y: 21.814827, z: -0.10377414}
+      up: {x: 0.97561157, y: 0.2193782, z: 0.0074338936}
       fov: 35
       aspectRatio: 0
       orthoSize: 1
