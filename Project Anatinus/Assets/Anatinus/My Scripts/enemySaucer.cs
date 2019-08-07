@@ -17,7 +17,7 @@ public class enemySaucer : NetworkBehaviour
     [SyncVar]
     float speed;
     [SyncVar]
-    public float xSpeed = -10;
+    public float xSpeed = -7;
     [SyncVar]
     public int tilt = 0;
 

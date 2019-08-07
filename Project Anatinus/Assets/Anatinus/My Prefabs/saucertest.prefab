@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 114047096144316112}
   - component: {fileID: 114337296015274588}
   - component: {fileID: 2530678131189412386}
-  - component: {fileID: 1036925776453542565}
   m_Layer: 12
   m_Name: saucertest
   m_TagString: Untagged
@@ -157,21 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de1d8a16ec8207458cd1fa734e0c3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 8445999514506917848, guid: e34daf493e2f0e243a6159676bf9d93a,
+  explosion: {fileID: 3478795129229344075, guid: abc798369d26fb44b8b1189eab8cc944,
     type: 3}
---- !u!114 &1036925776453542565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346504862874044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb4d16bec3aff2459c8bcf658be7de4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points: 10
 --- !u!1 &1737801341371454
 GameObject:
   m_ObjectHideFlags: 0

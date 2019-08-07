@@ -27,10 +27,16 @@ public class testLevelScript : MonoBehaviour
         timer += timerSpeed * Time.deltaTime;
 
         //LEVEL TIMES//
-        if (timer > 3 && timer < 4 && !GameObject.Find("redSaucerGroupSpawned1"))
+        /*if (timer > 20 && timer < 21 && !GameObject.Find("redSaucerGroupSpawned1"))
         {
             redSaucersPrefab.transform.position = spawnPosition;
             redSaucersPrefab.name = "redSaucerGroupSpawned1";
-        }
+        }*/
+
+        if (timer > 5 && timer < 6)
+        { goldfishesPrefab.SetActive(true); }
+
+        if (timer > 10 && timer < 11)
+        { saucersPrefab.SetActive(true); }
     }
 }

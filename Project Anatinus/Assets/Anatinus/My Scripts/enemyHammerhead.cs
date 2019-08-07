@@ -5,6 +5,8 @@ using Lean.Pool;
 
 public class enemyHammerhead : MonoBehaviour
 {
+    public bool execute = false;
+
     public int maxSpeed;
     public float xSpeed;
     public float posX;
@@ -27,33 +29,41 @@ public class enemyHammerhead : MonoBehaviour
         
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        execute = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(xSpeed * Time.deltaTime, 0, 0);
-
-        //Once the enemy has passed the marked position, change speed.
-        if (this.transform.position.x < this.posX & this.transform.position.x > this.posX2 & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
+        if (execute == true)
         {
-            xSpeed += 5 * Time.deltaTime;
-        }
-        if (this.transform.position.x < this.posX2 & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
-        {
-            xSpeed += 1 * Time.deltaTime;
-        }
+            transform.Translate(xSpeed * Time.deltaTime, 0, 0);
 
-        if (this.transform.position.x > this.posX & this.xSpeed > -maxSpeed & this.xSpeed > -this.limitX2)
-        {
-            xSpeed -= 5 * Time.deltaTime;
-        }
+            //Once the enemy has passed the marked position, change speed.
+            if (this.transform.position.x < this.posX & this.transform.position.x > this.posX2 & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
+            {
+                xSpeed += 5 * Time.deltaTime;
+            }
+            if (this.transform.position.x < this.posX2 & this.xSpeed < maxSpeed & this.xSpeed < this.limitX)
+            {
+                xSpeed += 1 * Time.deltaTime;
+            }
+
+            if (this.transform.position.x > this.posX & this.xSpeed > -maxSpeed & this.xSpeed > -this.limitX2)
+            {
+                xSpeed -= 5 * Time.deltaTime;
+            }
 
 
-        timer += timerSpeed * Time.deltaTime;
-        if (timer > timerMax)
-        {
-            LeanPool.Spawn(missile, missileLauncher1.position, missileLauncher1.rotation);
-            LeanPool.Spawn(missile, missileLauncher2.position, missileLauncher2.rotation);
-            timer = 0;
+            timer += timerSpeed * Time.deltaTime;
+            if (timer > timerMax)
+            {
+                LeanPool.Spawn(missile, missileLauncher1.position, missileLauncher1.rotation);
+                LeanPool.Spawn(missile, missileLauncher2.position, missileLauncher2.rotation);
+                timer = 0;
+            }
         }
     }
 }

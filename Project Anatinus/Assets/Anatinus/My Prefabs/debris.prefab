@@ -46,12 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphics: {fileID: 4652201012932395036}
   animationTimer: 0
-  animationTimerSpeed: 16
+  animationTimerSpeed: 20
   spin: 0
   spinAmount: 22.5
   forwardSpeed: 10
   ySpeed: 10
   yForce: 50
+  spinDirection: 0
 --- !u!1001 &4652201012932495036
 PrefabInstance:
   m_ObjectHideFlags: 0

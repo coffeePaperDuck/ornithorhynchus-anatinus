@@ -69,10 +69,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1091814105281614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb4d16bec3aff2459c8bcf658be7de4, type: 3}
+  m_Script: {fileID: 11500000, guid: 55fd5f1db4eb9204089d50603f4bf137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   points: 100
+  bonus: {fileID: 0}
 --- !u!54 &1356909272037901033
 Rigidbody:
   m_ObjectHideFlags: 0
