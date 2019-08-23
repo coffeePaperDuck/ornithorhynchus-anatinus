@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using Lean.Pool;
 
-public class crate : NetworkBehaviour
+public class crate : MonoBehaviour
 {
     public Transform spawn;
 
@@ -30,23 +29,12 @@ public class crate : NetworkBehaviour
     public int powerup5;
     public int mines;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     void OnDisable()
     {
         if (weaponPods != 0)
         {
             GameObject pods = (GameObject)LeanPool.Spawn(weaponPodsPrefab, spawn.position, spawn.rotation);
             weaponPodsPrefab.name = "pods";
-            NetworkServer.Spawn(pods);
         }
 
         if (pointsDoubler != 0)
@@ -63,7 +51,6 @@ public class crate : NetworkBehaviour
         {
             GameObject powerup = (GameObject)LeanPool.Spawn(powerupPrefab, spawn.position, spawn.rotation);
             powerupPrefab.name = "powerup";
-            NetworkServer.Spawn(powerup);
         }
         
     }

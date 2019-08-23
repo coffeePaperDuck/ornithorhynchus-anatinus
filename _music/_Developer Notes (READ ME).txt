@@ -1,0 +1,31 @@
+The level tracks correspond to these levels respectively:
+
+Level 1: Mungola
+Level 2: Snowy Mountains
+Level 3: Sky
+Level 4: Jungle
+Level 5: Volcanic Caves
+Level 6: Underwater
+Level 7: Overseas
+Level 8: Collosatropolis
+
+Baddie Tune 1 will accompany levels 1 and 2.
+Baddie Tune 2 will accompany levels 3 and 4.
+Baddie Tune 3 will accompany level 5.
+Baddie Tune 4 will accompany level 6.
+Baddie Tune 5 will accompany levels 7 and 8.
+Finale will cover level X.
+
+The world level select screen in the 'Concepts' folder should provide a general idea of the level placement
+(we'll probably model a new world to better present this)
+
+__________________________________________________
+NOTES:
+
+Level 2 track is repetitive, planned to trim down.
+
+Level 5 differs significantly from the other tracks, but could work very well should the level be executed properly.
+
+Baddie Tune 3 will be tailored to the boss, having an intro + looping sections for each phase of the battle.
+
+Baddie Tune 4 is chill.

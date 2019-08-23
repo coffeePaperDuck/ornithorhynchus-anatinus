@@ -35,7 +35,7 @@ public class balloon : MonoBehaviour
         }
 
         //If both still exist, keep rising.
-        if (GameObject.Find("balloonPrefab") & GameObject.Find("packagePrefab"))
+        if (GameObject.Find("balloonPrefab") && GameObject.Find("packagePrefab"))
         {
             speed += 1 * Time.deltaTime;
         }

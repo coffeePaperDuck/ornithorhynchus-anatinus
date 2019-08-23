@@ -26,21 +26,5 @@ public class shootAtPosition : MonoBehaviour
 
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-
-
-
-    }
-
-
-
-
-
 }
     
