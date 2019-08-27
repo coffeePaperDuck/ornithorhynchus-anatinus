@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Lean.Pool;
 
 
 public class playerBullets : MonoBehaviour
 {
-    public float speed = 20.0f;
-    public float vertSpeed;
+    public float xSpeed = 20.0f;
+    public float ySpeed;
     public float zSpeed;
     public float timer = 1.0f;
     public float rotation;
@@ -15,18 +14,18 @@ public class playerBullets : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(speed * Time.deltaTime, vertSpeed * Time.deltaTime, zSpeed * Time.deltaTime);
+        transform.Translate(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime, zSpeed * Time.deltaTime);
         transform.eulerAngles = new Vector3(0, 0, rotation);
 
         timer -= 5.0f * Time.deltaTime;
         if (timer < 0)
         {
-            transform.Translate(0, -vertSpeed * Time.deltaTime, 0);
+            transform.Translate(0, -ySpeed * Time.deltaTime, 0);
         }
 
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
-            LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
         }
 
         if (transform.position.z > 0)
@@ -61,7 +60,7 @@ public class playerBullets : MonoBehaviour
             if (powerup.timer < 0.3)
             {
                 powerup.powerup += 0.01f;
-                LeanPool.Despawn(gameObject);
+                Destroy(gameObject);
             }
         }
     }

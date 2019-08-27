@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class effectExplosion : MonoBehaviour
+public class activateOnDisable : MonoBehaviour
 {
-    public GameObject explosion;
+    public GameObject activatable;
 
     //this is so that when the game starts, it does not activate as soon as the objects with this script load into the level
     public bool eligible = false;
@@ -15,8 +15,18 @@ public class effectExplosion : MonoBehaviour
         eligible = true;
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+        activatable.transform.position = this.transform.position;
+    }
+
     void OnDisable()
     {
-        Instantiate(explosion, this.transform.position, this.transform.rotation);
+        if (eligible == true)
+        {
+            activatable.SetActive(true);
+        }
     }
 }

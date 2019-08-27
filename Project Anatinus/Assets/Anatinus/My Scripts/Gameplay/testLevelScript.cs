@@ -15,9 +15,9 @@ public class testLevelScript : MonoBehaviour
     [SerializeField]
     public List<float> times;
 
-    // public List<string> Enemies;
+    int spawnPointY;
 
-    int spawnPointY = Random.Range(-5, 5);
+    // public List<string> Enemies;
 
 
     // Update is called once per frame

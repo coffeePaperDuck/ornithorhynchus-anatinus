@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18a4af182da4ae4198303b7a7ec4c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  vertSpeed: -1
+  xSpeed: 20
+  ySpeed: -1
   zSpeed: 0
   timer: 1
   rotation: 0
@@ -93,9 +93,8 @@ GameObject:
   - component: {fileID: 1658446132816139251}
   - component: {fileID: 1658446132816139261}
   - component: {fileID: 1658446132816139204}
-  - component: {fileID: 7289782012028659452}
   m_Layer: 30
-  m_Name: Graphics
+  m_Name: graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,19 +161,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658446132816139166}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &7289782012028659452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658446132816139166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23fa698560b688845bf08bafe6dc1b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AdditionalVertexStreamMesh: {fileID: 0}
 --- !u!1 &4027047034098892424
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4180614210948490}
   - component: {fileID: 114341492444634816}
   - component: {fileID: 3276127949798114903}
-  - component: {fileID: 1356909272037901033}
   - component: {fileID: 1356909272037901032}
   - component: {fileID: 1356909272037901034}
   m_Layer: 12
@@ -74,22 +73,6 @@ MonoBehaviour:
   points: 100
   bonus: {fileID: 0}
   eligible: 0
---- !u!54 &1356909272037901033
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091814105281614}
-  serializedVersion: 2
-  m_Mass: 1e+9
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!114 &1356909272037901032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +114,7 @@ GameObject:
   - component: {fileID: 33053398509138060}
   - component: {fileID: 23193739191322136}
   m_Layer: 20
-  m_Name: goldfishGraphics
+  m_Name: graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

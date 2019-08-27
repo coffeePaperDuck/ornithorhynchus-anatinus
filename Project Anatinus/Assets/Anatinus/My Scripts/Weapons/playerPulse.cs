@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Lean.Pool;
 
 public class playerPulse : MonoBehaviour
 {
@@ -28,12 +27,12 @@ public class playerPulse : MonoBehaviour
         timer -= 3.0f * Time.deltaTime;
         if (timer < 0)
         {
-            LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
         }
 
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
-            LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
         }
     }
 

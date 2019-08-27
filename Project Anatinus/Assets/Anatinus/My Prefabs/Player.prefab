@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5796824393874435461}
   m_Layer: 9
-  m_Name: Rocket Spawn
+  m_Name: rocketSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6201605577900237109}
   - component: {fileID: 5810616715519739379}
   m_Layer: 9
-  m_Name: Collision
+  m_Name: collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 7537843998023135606}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!64 &6201605577900237109
 MeshCollider:
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7531493886313915930}
   m_Layer: 9
-  m_Name: Bullet Spawn
+  m_Name: bulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7567024122782442654}
   - component: {fileID: 4185594476797918864}
   m_Layer: 9
-  m_Name: Player
+  m_Name: player
   m_TagString: Player 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,9 +145,9 @@ Transform:
   m_Children:
   - {fileID: 7531493886313915930}
   - {fileID: 5796824393874435461}
-  - {fileID: 1044511957223332672}
   - {fileID: 7537880022393819936}
   - {fileID: 7102365292522042499}
+  - {fileID: 1044511957223332672}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,9 +194,9 @@ MonoBehaviour:
     type: 3}
   autoBullet2Prefab: {fileID: 1658446132816139165, guid: ca5b2a55432b90146885fd4a02008ae7,
     type: 3}
-  blueBulletLightPrefab: {fileID: 1330227213621312901, guid: ededcd2a7a683b549a5209bb7edb4a23,
-    type: 3}
   autoBulletPodPrefab: {fileID: 3453185745640214856, guid: bdb32975b2b8aeb48b95112ba9f1b220,
+    type: 3}
+  blueBulletLightPrefab: {fileID: 1330227213621312901, guid: ededcd2a7a683b549a5209bb7edb4a23,
     type: 3}
   sonicPrefab: {fileID: 68, guid: 26041501ac3c543469d3b3aa5cc21d50, type: 3}
   rocketPrefab: {fileID: 65, guid: b17cc536f3470c5438562b8af1a6a32e, type: 3}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 7558079255851372042}
   - component: {fileID: 7550008631029885026}
   m_Layer: 9
-  m_Name: Graphics
+  m_Name: graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 7537843998023135606}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &7558079255851372042
 MeshFilter:
@@ -369,7 +369,7 @@ PrefabInstance:
     - target: {fileID: 4156595582503101905, guid: 74cce4501a81b2d4a966d6bf88ddf13c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4156595582503101905, guid: 74cce4501a81b2d4a966d6bf88ddf13c,
         type: 3}

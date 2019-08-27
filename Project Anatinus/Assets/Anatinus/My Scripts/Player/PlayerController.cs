@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Lean.Pool;
 
 public class PlayerController : MonoBehaviour
 {
@@ -272,10 +271,10 @@ public class PlayerController : MonoBehaviour
             //Rocketman
             if (Input.GetKeyUp(KeyCode.RightControl))
             {
-                if (powerup == 4)
-                {
+                //if (powerup == 4)
+                //{
                     CmdLite();
-                }
+                //}
             }
         }
 
@@ -317,8 +316,8 @@ public class PlayerController : MonoBehaviour
         if (powerup == 0)
         {
             // Create bullets from the prefabs
-            GameObject bullet1 = (GameObject)LeanPool.Spawn(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject bullet2 = (GameObject)LeanPool.Spawn(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet1 = (GameObject)Instantiate(defaultBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet2 = (GameObject)Instantiate(defaultBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
             defaultBullet1Prefab.name = "bullet1";
             defaultBullet2Prefab.name = "bullet2";
             // Spawn the bullet on the Clients
@@ -328,8 +327,8 @@ public class PlayerController : MonoBehaviour
             // If Weapon Pods are active
             if (weaponPods == 1)
             {
-                GameObject bullet1Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
-                GameObject bullet2Pod = (GameObject)LeanPool.Spawn(defaultBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                GameObject bullet1Pod = (GameObject)Instantiate(defaultBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject bullet2Pod = (GameObject)Instantiate(defaultBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
                 defaultBulletPodPrefab.name = "bulletPod";
 
                 //NetworkServer.Spawn(bullet1Pod);
@@ -341,10 +340,10 @@ public class PlayerController : MonoBehaviour
         if (powerup == 1)
         {
             // Create bullets from the prefabs
-            GameObject wideBullet0 = (GameObject)LeanPool.Spawn(wideBullet0Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject wideBullet1 = (GameObject)LeanPool.Spawn(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject wideBullet2 = (GameObject)LeanPool.Spawn(wideBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject wideBullet3 = (GameObject)LeanPool.Spawn(wideBullet3Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet0 = (GameObject)Instantiate(wideBullet0Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet1 = (GameObject)Instantiate(wideBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet2 = (GameObject)Instantiate(wideBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject wideBullet3 = (GameObject)Instantiate(wideBullet3Prefab, bulletSpawn.position, bulletSpawn.rotation);
             wideBullet0Prefab.name = "wideBullet0";
             wideBullet1Prefab.name = "wideBullet1";
             wideBullet2Prefab.name = "wideBullet2";
@@ -358,8 +357,8 @@ public class PlayerController : MonoBehaviour
             // If Weapon Pods are active
             if (weaponPods == 1)
             {
-                GameObject wideBullet1Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
-                GameObject wideBullet2Pod = (GameObject)LeanPool.Spawn(wideBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                GameObject wideBullet1Pod = (GameObject)Instantiate(wideBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject wideBullet2Pod = (GameObject)Instantiate(wideBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
                 wideBulletPodPrefab.name = "wideBulletPod";
 
                 //NetworkServer.Spawn(wideBullet1Pod);
@@ -371,8 +370,8 @@ public class PlayerController : MonoBehaviour
         if (powerup == 2)
         {
             // Create bullets from the prefabs
-            GameObject autoBullet1 = (GameObject)LeanPool.Spawn(autoBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
-            GameObject autoBullet2 = (GameObject)LeanPool.Spawn(autoBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject autoBullet1 = (GameObject)Instantiate(autoBullet1Prefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject autoBullet2 = (GameObject)Instantiate(autoBullet2Prefab, bulletSpawn.position, bulletSpawn.rotation);
             autoBullet1Prefab.name = "autoBullet1";
             autoBullet2Prefab.name = "autoBullet2";
             // Spawn the bullet on the Clients
@@ -382,8 +381,8 @@ public class PlayerController : MonoBehaviour
             // If Weapon Pods are active
             if (weaponPods == 1)
             {
-                GameObject autoBullet1Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
-                GameObject autoBullet2Pod = (GameObject)LeanPool.Spawn(autoBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                GameObject autoBullet1Pod = (GameObject)Instantiate(autoBulletPodPrefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject autoBullet2Pod = (GameObject)Instantiate(autoBulletPodPrefab, podTwoSpawn.position, podTwoSpawn.rotation);
                 autoBulletPodPrefab.name = "autoBulletPod";
 
                 //NetworkServer.Spawn(autoBullet1Pod);
@@ -395,7 +394,7 @@ public class PlayerController : MonoBehaviour
         if (powerup == 3)
         {
             // Create pulses from the prefabs
-            GameObject pulse1 = (GameObject)LeanPool.Spawn(sonicPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject pulse1 = (GameObject)Instantiate(sonicPrefab, bulletSpawn.position, bulletSpawn.rotation);
             sonicPrefab.name = "pulse1";
             // Spawn the pulse on the Clients
             //NetworkServer.Spawn(pulse1);
@@ -405,18 +404,18 @@ public class PlayerController : MonoBehaviour
         if (powerup == 4)
         {
             // Create rockets from the prefabs
-            GameObject rocket1 = (GameObject)LeanPool.Spawn(rocketPrefab, rocketSpawn.position, rocketSpawn.rotation);
-            rocketPrefab.name = "rocket1";
+            GameObject rocket1 = (GameObject)Instantiate(rocketPrefab, rocketSpawn.position, rocketSpawn.rotation);
+            rocketPrefab.name = "rocket";
             // Spawn the rocket on the Clients
             //NetworkServer.Spawn(rocket1);
 
             // If Weapon Pods are active
             if (weaponPods == 1)
             {
-                GameObject rocket0 = (GameObject)LeanPool.Spawn(rocketPod1Prefab, podOneSpawn.position, podOneSpawn.rotation);
-                GameObject rocket2 = (GameObject)LeanPool.Spawn(rocketPod2Prefab, podTwoSpawn.position, podTwoSpawn.rotation);
-                rocketPod1Prefab.name = "rocket0";
-                rocketPod2Prefab.name = "rocket2";
+                GameObject rocket0 = (GameObject)Instantiate(rocketPod1Prefab, podOneSpawn.position, podOneSpawn.rotation);
+                GameObject rocket2 = (GameObject)Instantiate(rocketPod2Prefab, podTwoSpawn.position, podTwoSpawn.rotation);
+                rocketPod1Prefab.name = "rocketPod1";
+                rocketPod2Prefab.name = "rocketPod2";
 
                 // Spawn the rocket on the Clients
                 //NetworkServer.Spawn(rocket0);
@@ -431,45 +430,41 @@ public class PlayerController : MonoBehaviour
         //Lights for Autofire
         if (powerup == 2)
         {
-            GameObject bulletLight1 = (GameObject)LeanPool.Spawn(blueBulletLightPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bulletLight1 = (GameObject)Instantiate(blueBulletLightPrefab, bulletSpawn.position, bulletSpawn.rotation);
             blueBulletLightPrefab.name = "bulletLight1";
             // Spawn the bullet on the Clients
             //NetworkServer.Spawn(bulletLight1);
         }
 
-        //Lights up Rockets
-        if (powerup == 4)
-        {
-            rocket = GameObject.Find("rocket1");
-            rocketPod1 = GameObject.Find("rocket0");
-            rocketPod2 = GameObject.Find("rocket2");
+            rocket = GameObject.Find("rocket(Clone)");
+            rocketPod1 = GameObject.Find("rocketPod1(Clone)");
+            rocketPod2 = GameObject.Find("rocketPod2(Clone)");
             if (rocket != null)
             {
-                playerRockets rocket1 = rocket.GetComponent<playerRockets>();
+                playerRockets rocketComponents = rocket.GetComponent<playerRockets>();
 
-                rocket1.lit = 1;
+                rocketComponents.lit = 1;
 
-                rocket1.name = "rocketLit1";
+                rocketComponents.name = "rocketLit";
             }
 
             if (rocketPod1 != null)
             {
-                playerRocketsPod1 rocket0 = rocketPod1.GetComponent<playerRocketsPod1>();
+                playerRocketsPod1 rocketPod1Components = rocketPod1.GetComponent<playerRocketsPod1>();
 
-                rocket0.lit = 1;
+                rocketPod1Components.lit = 1;
 
-                rocket0.name = "rocketLit0";
+                rocketPod1Components.name = "rocketPod1Lit";
             }
 
             if (rocketPod2 != null)
             {
-                playerRocketsPod2 rocket2 = rocketPod2.GetComponent<playerRocketsPod2>();
+                playerRocketsPod2 rocketPod2Components = rocketPod2.GetComponent<playerRocketsPod2>();
 
-                rocket2.lit = 1;
+                rocketPod2Components.lit = 1;
 
-                rocket2.name = "rocketLit2";
+                rocketPod2Components.name = "rocketPod2Lit";
             }
-        }
     }
 
     //Collisions
@@ -480,44 +475,54 @@ public class PlayerController : MonoBehaviour
         powerupStar powerupStar = hit.GetComponent<powerupStar>();
         pickupPods pickupPods = hit.GetComponent<pickupPods>();
 
-        //Die
+        //If the collided object has health
         if (health != null)
         {
+            //Deal kamikaze damage to the collided object
             health.TakeDamage(dmg);
+
+            //Kill the player
             alive = 0;
         }
 
-        //Get Weapon Pods
+        //If the collided object is able to provide weapon pods
         if (pickupPods != null)
         {
+            //Provide weapon pods
             weaponPods = 1;
         }
 
-        //Get Powerup
+        //If the collided object is able to provide powerups
         if (powerupStar != null)
         {
+            //If the powerup timers are between the values below
             if (powerupStar.powerup > 0 && powerupStar.powerup < 1.5)
             {
+                //Provide wideshot
                 powerup = 1;
             }
 
             if (powerupStar.powerup > 1.5 && powerupStar.powerup < 2.5)
             {
+                //Provide autofire
                 powerup = 2;
             }
 
             if (powerupStar.powerup > 2.5 && powerupStar.powerup < 3.5)
             {
+                //Provide pulse
                 powerup = 3;
             }
 
             if (powerupStar.powerup > 3.5 && powerupStar.powerup < 4.5)
             {
+                //Provide rockets
                 powerup = 4;
             }
 
             if (powerupStar.powerup > 4.5 && powerupStar.powerup < 5.5)
             {
+                //Provide wideshot
                 powerup = 1;
             }
         }

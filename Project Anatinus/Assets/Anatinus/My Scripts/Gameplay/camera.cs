@@ -16,6 +16,6 @@ public class camera: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = new Vector3(0, GameObject.Find("Player").transform.position.y/4, -10);
+        transform.localPosition = new Vector3(0, GameObject.Find("player").transform.position.y/4, -10);
     }
 }

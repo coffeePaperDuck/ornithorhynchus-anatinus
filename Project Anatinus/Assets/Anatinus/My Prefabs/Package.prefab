@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 814198883431853945}
   - component: {fileID: 814198883431853894}
   - component: {fileID: 814198883431853895}
-  - component: {fileID: 814198883431853892}
   m_Layer: 16
-  m_Name: Balloon
+  m_Name: balloon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,6 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -107,39 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 1
---- !u!114 &814198883431853892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814198883431853890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1 &814198884757608654
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +118,7 @@ GameObject:
   - component: {fileID: 814198884757608641}
   - component: {fileID: 241786549506422342}
   m_Layer: 0
-  m_Name: Package
+  m_Name: package
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 1111992327964170692, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_Name
-      value: Crate
+      value: crate
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170703, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
@@ -253,6 +220,11 @@ PrefabInstance:
     - target: {fileID: 1111992327964170703, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314884868969933716, guid: 2308effe0328b894f9a82e5f5e32aba1,
+        type: 3}
+      propertyPath: powerup
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
@@ -333,11 +305,6 @@ PrefabInstance:
     - target: {fileID: 1111992327964170701, guid: 2308effe0328b894f9a82e5f5e32aba1,
         type: 3}
       propertyPath: m_AssetId.i15
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5314884868969933716, guid: 2308effe0328b894f9a82e5f5e32aba1,
-        type: 3}
-      propertyPath: powerup
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

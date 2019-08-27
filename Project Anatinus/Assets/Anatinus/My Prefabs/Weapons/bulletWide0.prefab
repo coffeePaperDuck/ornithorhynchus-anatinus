@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18a4af182da4ae4198303b7a7ec4c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  vertSpeed: 0
+  xSpeed: 20
+  ySpeed: 0
   zSpeed: 0
   timer: 1
   rotation: 30
@@ -95,9 +95,8 @@ GameObject:
   - component: {fileID: 91}
   - component: {fileID: 102}
   - component: {fileID: 122}
-  - component: {fileID: 6928805470256992929}
   m_Layer: 30
-  m_Name: Graphics
+  m_Name: graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,19 +222,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &6928805470256992929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23fa698560b688845bf08bafe6dc1b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AdditionalVertexStreamMesh: {fileID: 0}
 --- !u!1 &2543964267768952122
 GameObject:
   m_ObjectHideFlags: 0

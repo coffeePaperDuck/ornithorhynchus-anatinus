@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Lean.Pool;
 
 public class enemyHammerhead : MonoBehaviour
 {
@@ -60,8 +59,8 @@ public class enemyHammerhead : MonoBehaviour
             timer += timerSpeed * Time.deltaTime;
             if (timer > timerMax)
             {
-                LeanPool.Spawn(missile, missileLauncher1.position, missileLauncher1.rotation);
-                LeanPool.Spawn(missile, missileLauncher2.position, missileLauncher2.rotation);
+                Instantiate(missile, missileLauncher1.position, missileLauncher1.rotation);
+                Instantiate(missile, missileLauncher2.position, missileLauncher2.rotation);
                 timer = 0;
             }
         }

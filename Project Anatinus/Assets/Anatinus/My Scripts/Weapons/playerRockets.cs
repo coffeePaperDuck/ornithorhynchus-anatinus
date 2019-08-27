@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Lean.Pool;
 
 
 public class playerRockets : MonoBehaviour
 {
     public int lit = 0;
-    public float speed;
-    public float vertSpeed;
+    public float xSpeed;
+    public float ySpeed;
     public float zSpeed;
     public float timer = 0.0f;
     public float dmg;
@@ -22,48 +21,48 @@ public class playerRockets : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        vertSpeed = -15;
+        ySpeed = -15;
         GetComponent<MeshFilter>().mesh = rocket5Prefab;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(speed * Time.deltaTime, vertSpeed * Time.deltaTime, zSpeed * Time.deltaTime);
+        transform.Translate(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime, zSpeed * Time.deltaTime);
         transform.eulerAngles = new Vector3(0, 0, 0);
 
         if (lit == 1)
         {
             timer += 2.0f * Time.deltaTime;
             GetComponent<MeshFilter>().mesh = rocket4Prefab;
-            vertSpeed = -7.5f;
-            speed = 10;
+            xSpeed = 10;
+            ySpeed = -7.5f;
         }
 
         if (timer > 0.1)
         {
             GetComponent<MeshFilter>().mesh = rocket3Prefab;
-            vertSpeed = 10f;
-            speed = 20;
+            xSpeed = 20;
+            ySpeed = 10f;
         }
 
         if (timer > 0.2)
         {
             GetComponent<MeshFilter>().mesh = rocket2Prefab;
-            vertSpeed = 5f;
-            speed = 10;
+            xSpeed = 10;
+            ySpeed = 5f;
         }
 
         if (timer > 0.3)
         {
             GetComponent<MeshFilter>().mesh = rocket1Prefab;
-            vertSpeed = 0;
-            speed = 20;
+            xSpeed = 20;
+            ySpeed = 0;
         }
 
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
-            LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
         }
 
         if (transform.position.z > 0)
@@ -86,26 +85,26 @@ public class playerRockets : MonoBehaviour
         if (health != null)
         {
             health.TakeDamage(dmg);
-            LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
         }
         if (powerup != null)
         {
             if (powerup.timer < 0.3)
             {
                 powerup.powerup += 0.01f;
-                LeanPool.Despawn(gameObject);
+                Destroy(gameObject);
             }
         }
     }
 
     void OnDisable()
     {
-        this.name = "rocket1";
+        this.name = "rocket";
 
         GetComponent<MeshFilter>().mesh = rocket5Prefab;
         lit = 0;
         timer = 0.0f;
-        speed = 0.0f;
-        vertSpeed = -15;
+        xSpeed = 0.0f;
+        ySpeed = -15;
     }
 }

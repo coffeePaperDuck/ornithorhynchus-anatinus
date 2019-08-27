@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Lean.Pool;
 
 public class enemyBullet : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class enemyBullet : MonoBehaviour
         //Despawn bullet if it goes off the screen
         if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 7.5 || transform.position.y < -7.5)
         {
-            LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
         }
 
         //Bullet movement
@@ -47,7 +46,7 @@ public class enemyBullet : MonoBehaviour
         if (health != null)
         {
             health.TakeDamage(dmg);
-            LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
         }
     }
 }

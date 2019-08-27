@@ -6,7 +6,7 @@ public class debrisOnDisable : MonoBehaviour
 {
     public GameObject debris;
 
-    //this is so that when the game starts, it does not give you the bonus/points as soon as the objects with this script load into the level
+    //this is so that when the game starts, it does not activate as soon as the objects with this script load into the level
     public bool eligible = false;
 
     void Start()
