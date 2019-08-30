@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Logan\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Logan\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Project Anatinus.1685305407.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Logan\Desktop\PROJECTS\_Project Anatinus\Project Anatinus" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Anatinus" t="Include">
+          <e p="My Scripts" t="Include">
+            <e p="activateOnDisable.cs" t="Include" />
+            <e p="balloon.cs" t="Include" />
+            <e p="bonusPoints.cs" t="Include" />
+            <e p="debris.cs" t="Include" />
+            <e p="debrisOnDisable.cs" t="Include" />
+            <e p="destroyOnCollision.cs" t="Include" />
+            <e p="effectExplosion.cs" t="Include" />
+            <e p="Enemies" t="Include">
+              <e p="enemyBullet.cs" t="Include" />
+              <e p="enemyBulletGraphics.cs" t="Include" />
+              <e p="enemyFish.cs" t="Include" />
+              <e p="enemyGoldfish.cs" t="Include" />
+              <e p="enemyGoldfishAnimation.cs" t="Include" />
+              <e p="enemyHammerhead.cs" t="Include" />
+              <e p="enemyHammerheadMovement.cs" t="Include" />
+              <e p="enemyLaser.cs" t="Include" />
+              <e p="enemyLaserGraphics.cs" t="Include" />
+              <e p="enemySaucer.cs" t="Include" />
+              <e p="enemySaucerReversed.cs" t="Include" />
+              <e p="enemySquidAnimation.cs" t="Include" />
+              <e p="enemySquidMovement.cs" t="Include" />
+              <e p="groupGoldfish.cs" t="Include" />
+              <e p="groupRedSaucers.cs" t="Include" />
+              <e p="homingMissile.cs" t="Include" />
+              <e p="Tests" t="Include">
+                <e p="enemyHulahoopAnimation.cs" t="Include" />
+                <e p="enemyHulahoopOrbit.cs" t="Include" />
+                <e p="enemySaucerHulahoop.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Gameplay" t="Include">
+              <e p="_allSeeingPaper.cs" t="Include" />
+              <e p="camera.cs" t="Include" />
+              <e p="Health.cs" t="Include" />
+              <e p="objectExecute.cs" t="Include" />
+              <e p="player1_scoreScript.cs" t="Include" />
+              <e p="scenery.cs" t="Include" />
+              <e p="testLevelScript.cs" t="Include" />
+            </e>
+            <e p="lightColorChange.cs" t="Include" />
+            <e p="lookAtPlayer.cs" t="Include" />
+            <e p="Main Menu" t="Include">
+              <e p="playGame.cs" t="Include" />
+              <e p="titleSaucer.cs" t="Include" />
+            </e>
+            <e p="Player" t="Include">
+              <e p="playerAnimation.cs" t="Include" />
+              <e p="playerMovement.cs" t="Include" />
+              <e p="playerOffense.cs" t="Include" />
+            </e>
+            <e p="point.cs" t="Include" />
+            <e p="pointsOnDisable.cs" t="Include" />
+            <e p="shootAtPosition.cs" t="Include" />
+            <e p="shootProjectile.cs" t="Include" />
+            <e p="staticRotation.cs" t="Include" />
+            <e p="Weapons" t="Include">
+              <e p="pickupPods.cs" t="Include" />
+              <e p="playerBullets.cs" t="Include" />
+              <e p="playerPod.cs" t="Include" />
+              <e p="playerPulse.cs" t="Include" />
+              <e p="playerRockets.cs" t="Include" />
+              <e p="playerRocketsPod1.cs" t="Include" />
+              <e p="playerRocketsPod2.cs" t="Include" />
+              <e p="playerWeaponPods.cs" t="Include" />
+              <e p="powerupStar.cs" t="Include" />
+            </e>
+          </e>
+          <e p="My Shader" t="Include">
+            <e p="Additive2D.shader" t="Include" />
+            <e p="Glow.shader" t="Include" />
+            <e p="Wrap Diffuse.shader" t="Include" />
+          </e>
+        </e>
+        <e p="Editor" t="Include">
+          <e p="CustomEditorBase.cs" t="Include" />
+        </e>
+        <e p="FPS.cs" t="Include" />
+        <e p="ScoreScript.cs" t="Include" />
+        <e p="Simple Helvetica" t="Include">
+          <e p="Editor" t="Include">
+            <e p="SimpleHelveticaCustomEditor.cs" t="Include" />
+          </e>
+          <e p="readme.txt" t="Include" />
+          <e p="SimpleHelvetica.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Project Anatinus.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

@@ -7,14 +7,14 @@ public class enemyLaserGraphics : MonoBehaviour
     public bool deflected = false;
     public Material material1;
     public Material material2;
-    Renderer rend;
+    Renderer _rend;
 
     void Start()
     {
-        rend = GetComponent<Renderer>();
+        _rend = GetComponent<Renderer>();
 
         // At start, use the first material
-        rend.material = material1;
+        _rend.material = material1;
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class enemyLaserGraphics : MonoBehaviour
         // ping-pong between the materials over the duration
         if (deflected == true)
         {
-            rend.material = material2;
+            _rend.material = material2;
         }
     }
 }

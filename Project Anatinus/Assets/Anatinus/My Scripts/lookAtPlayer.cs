@@ -9,7 +9,7 @@ public class lookAtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = GameObject.Find("Player");
+        target = GameObject.Find("player");
         transform.LookAt(target.transform);
     }
 }

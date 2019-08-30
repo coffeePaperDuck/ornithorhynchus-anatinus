@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6960452457952598800}
   m_Layer: 0
-  m_Name: debris
+  m_Name: activatable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,11 +182,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6956005436485699083}
   - component: {fileID: 6942830866124624667}
+  - component: {fileID: 6410311104580603464}
   - component: {fileID: 6993337721973863955}
   - component: {fileID: 4865779839886115553}
-  - component: {fileID: 6960452456315971402}
   - component: {fileID: 6960452456315971403}
-  - component: {fileID: 6961639245018925424}
+  - component: {fileID: 4143365959521519555}
   m_Layer: 12
   m_Name: saucer
   m_TagString: Untagged
@@ -230,6 +230,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6410311104580603464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961639245018925439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4b76a7d32f72e4fbbd9bdf492a39d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPrefab: {fileID: 0}
+  animationTimer: 12
+  shootingTimer: 2
+  maxSpeed: 10
+  xSpeed: -7
+  tilt: 0
 --- !u!114 &6993337721973863955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,19 +276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 3478795129229344075, guid: abc798369d26fb44b8b1189eab8cc944,
     type: 3}
---- !u!114 &6960452456315971402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961639245018925439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92509fef9a991f24fa1c1fa65ff362f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debris: {fileID: 6960452457952598815}
   eligible: 0
 --- !u!114 &6960452456315971403
 MonoBehaviour:
@@ -287,7 +292,7 @@ MonoBehaviour:
   points: 10
   bonus: {fileID: 0}
   eligible: 0
---- !u!114 &6961639245018925424
+--- !u!114 &4143365959521519555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,12 +301,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6961639245018925439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77caf2dac65cad34aa3d830924c22951, type: 3}
+  m_Script: {fileID: 11500000, guid: 62d05c1f547a4184793b4a6910542cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  execute: 0
-  go: {fileID: 0}
-  scriptName: enemySaucer
+  activatable: {fileID: 6960452457952598815}
+  eligible: 0
 --- !u!1 &6962017346521888627
 GameObject:
   m_ObjectHideFlags: 0

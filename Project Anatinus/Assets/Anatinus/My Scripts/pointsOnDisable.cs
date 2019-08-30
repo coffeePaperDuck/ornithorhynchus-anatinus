@@ -9,14 +9,17 @@ public class pointsOnDisable : MonoBehaviour
 
     //this is so that when the game starts, it does not give you the bonus/points as soon as the objects with this script load into the level
     public bool eligible = false;
+    private bool _isbonusNotNull;
+
     void Start()
     {
+        _isbonusNotNull = bonus != null;
         eligible = true;
     }
 
     void Update()
     {
-        if (bonus != null)
+        if (_isbonusNotNull)
         {
             bonus.transform.position = this.transform.position;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class enemyHulahoopAnimation : MonoBehaviour
 {
-    float spin = 0.0f;
+    float _spin = 0.0f;
     public float spinTimer = 0;
     float spinSpeed = 24.0f;
 
@@ -19,19 +19,23 @@ public class enemyHulahoopAnimation : MonoBehaviour
     // Update is called once per tilt
     void Update()
     {
+        var tf = transform;
+        
         //spins
         spinTimer += spinSpeed * Time.deltaTime;
         if (spinTimer > 1.0f)
         {
-            spin += 22.5f;
+            _spin += 22.5f;
             spinTimer = 0.0f;
         }
 
         //apply spins
-        transform.eulerAngles = new Vector3(0, -spin, 0);
-        Vector3 pos = transform.position;
-        pos.z = 0;
-        transform.position = pos;
+        tf.eulerAngles = new Vector3(0, -_spin, 0);
+        
+        //Lock axes listed below (Z axis is typically locked to keep the object on the 2D plane)
+        Vector3 axis = tf.position;
+        /*Z Axis*/ axis.z = 0;
+        tf.position = axis;
 
         //float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * tiltSpeed;
         //float z = Input.GetAxisRaw("Vertical") * Time.deltaTime * tiltSpeed;

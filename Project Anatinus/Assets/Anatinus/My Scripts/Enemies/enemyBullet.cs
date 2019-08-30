@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Anatinus.My_Scripts.Gameplay;
 using UnityEngine;
 
 public class enemyBullet : MonoBehaviour
@@ -8,10 +9,12 @@ public class enemyBullet : MonoBehaviour
     public float originalSpeed = 10;
     public float speed;
     public float dmg;
+    private enemyBulletGraphics _graphics;
 
     // Use this for initialization
     void Start()
     {
+        _graphics = GetComponentInChildren<enemyBulletGraphics>();
         speed = originalSpeed;
     }
 
@@ -28,13 +31,12 @@ public class enemyBullet : MonoBehaviour
         transform.Translate(0, 0, speed * Time.deltaTime);
 
         //Bullet graphics
-        enemyBulletGraphics graphics = GetComponentInChildren<enemyBulletGraphics>();
 
         //Bullet when deflected w/ Sonic Pulse
         if (deflected == true)
         {
             gameObject.layer = 10; //Changes the enemy bullet into a player bullet
-            graphics.deflected = true; //Changes the graphics
+            _graphics.deflected = true; //Changes the graphics
         }
     }
 

@@ -37,8 +37,9 @@ public class powerupStar : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        transform.Translate(speed * Time.deltaTime, 0, 0);
-        transform.eulerAngles = new Vector3(0, rot, 0);
+        Transform transformSpeedAndRotation;
+        (transformSpeedAndRotation = transform).Translate(speed * Time.deltaTime, 0, 0);
+        transformSpeedAndRotation.eulerAngles = new Vector3(0, rot, 0);
 
         if (powerup > 0 && powerup < 2)
         {
@@ -182,8 +183,9 @@ public class powerupStar : MonoBehaviour
             }
         }
 
-        Vector3 pos = transform.position;
-        pos.z = 0;
-        transform.position = pos;
+        var transformLockAxis = transform;
+        Vector3 axis = transformLockAxis.position;
+        axis.z = 0;
+        transformLockAxis.position = axis;
     }
 }

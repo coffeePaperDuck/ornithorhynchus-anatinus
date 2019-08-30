@@ -123,8 +123,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7537843998023135606}
+  - component: {fileID: 5719354125052972804}
+  - component: {fileID: 8402344046805048156}
   - component: {fileID: 7567024122782442654}
-  - component: {fileID: 4185594476797918864}
+  - component: {fileID: 4767924442254331660}
   m_Layer: 9
   m_Name: player
   m_TagString: Player 1
@@ -151,6 +153,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5719354125052972804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7534867631359596644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a02bad6fbfb7b47b3c5c364ea3afa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xSpeed: 10
+  _ySpeed: 10
+  allowMovement: 1
+--- !u!114 &8402344046805048156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7534867631359596644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08f14000a1abad44a4a6914f4f05387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timerSpeed: 1
+  _tilt: 0
+  _animationTimer: 0.25
 --- !u!114 &7567024122782442654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,21 +197,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   lives: 4
-  respawnTimer: 1.5
   powerup: 0
   powerupTimer: 0
   weaponPods: 0
   pointsDoubler: 0
-  dmg: 84
-  speed: 10
-  animationTimer: 2.5
   bulletSpawn: {fileID: 7531493886313915930}
   rocketSpawn: {fileID: 5796824393874435461}
-  centerOrbit: {fileID: 0}
   podOneSpawn: {fileID: 163278437762175179}
   podTwoSpawn: {fileID: 6057965754508339870}
   weaponPodsPrefab: {fileID: 1044511957223332673}
-  pointsDoublerPrefab: {fileID: 0}
   defaultBullet1Prefab: {fileID: 64, guid: ae808e93e35962d448590e1bae6b3d76, type: 3}
   defaultBullet2Prefab: {fileID: 62, guid: 48079796279db89438b262984e065c4b, type: 3}
   defaultBulletPodPrefab: {fileID: 1902243169477457764, guid: 017d237f1fef51348bcb44a2216aeb90,
@@ -196,26 +222,20 @@ MonoBehaviour:
     type: 3}
   autoBulletPodPrefab: {fileID: 3453185745640214856, guid: bdb32975b2b8aeb48b95112ba9f1b220,
     type: 3}
-  blueBulletLightPrefab: {fileID: 1330227213621312901, guid: ededcd2a7a683b549a5209bb7edb4a23,
-    type: 3}
+  autofireBulletCount: 0
+  autofireTimerMax: 1
+  autofireTimer: 1
   sonicPrefab: {fileID: 68, guid: 26041501ac3c543469d3b3aa5cc21d50, type: 3}
+  pulseCountMax: 3
+  pulseCount: 0
+  pulseTimerMax: 0.5
+  pulseTimer: 0
   rocketPrefab: {fileID: 65, guid: b17cc536f3470c5438562b8af1a6a32e, type: 3}
   rocketPod1Prefab: {fileID: 5837621158145379402, guid: 061fc49fd82368a4e87971b844d67b3b,
     type: 3}
   rocketPod2Prefab: {fileID: 315500543945496613, guid: 6274e585496098c449a7e9a8f930e452,
     type: 3}
-  lightningPrefab: {fileID: 0}
-  autofireBulletCount: 0
-  autofireTimerMax: 1
-  autofireTimer: 1
-  autofireLightCount: 0
-  autofireLightTimerMax: 1
-  autofireLightTimer: 1
-  pulseCountMax: 3
-  pulseCount: 0
-  pulseTimerMax: 0.5
-  pulseTimer: 0
---- !u!54 &4185594476797918864
+--- !u!54 &4767924442254331660
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,12 +244,12 @@ Rigidbody:
   m_GameObject: {fileID: 7534867631359596644}
   serializedVersion: 2
   m_Mass: 0.0000001
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!1 &7534934798604909988
 GameObject:

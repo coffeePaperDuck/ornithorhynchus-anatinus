@@ -24,7 +24,7 @@ NOTES:
 
 Level 2 track is repetitive, planned to trim down.
 
-Level 5 differs significantly from the other tracks, but could work very well should the level be executed properly.
+While Level 5 differs somewhat from the other tracks, it can fit very well with the hardcore environment and difficulty in mind for the volcanic caves.
 
 Baddie Tune 3 will be tailored to the boss, having an intro + looping sections for each phase of the battle.
 

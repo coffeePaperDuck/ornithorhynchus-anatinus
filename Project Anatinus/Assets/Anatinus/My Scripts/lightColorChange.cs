@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lightSolution : MonoBehaviour
+public class lightColorChange : MonoBehaviour
 {
-    public Light lighty;
+    public Light lightComponent;
 
     public bool changeColors = true;
     public float colorSpeed = 1.0f;
@@ -16,7 +16,7 @@ public class lightSolution : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        lighty = GetComponent<Light>();
+        lightComponent = GetComponent<Light>();
 	}
 	
 	// Update is called once per frame
@@ -24,8 +24,8 @@ public class lightSolution : MonoBehaviour
     {    
         if(changeColors)
         {
-            float BOOP = (Mathf.PingPong(Time.time, colorSpeed) / colorSpeed);
-            lighty.color = Color.Lerp(startColor, endColor, BOOP);
+            float lightChangeColor = (Mathf.PingPong(Time.time, colorSpeed) / colorSpeed);
+            lightComponent.color = Color.Lerp(startColor, endColor, lightChangeColor);
         }
 	}
 }

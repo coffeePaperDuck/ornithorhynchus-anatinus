@@ -17,6 +17,7 @@ public class effectExplosion : MonoBehaviour
 
     void OnDisable()
     {
-        Instantiate(explosion, this.transform.position, this.transform.rotation);
+        var transform1 = transform;
+        Instantiate(explosion, transform1.position, transform1.rotation);
     }
 }

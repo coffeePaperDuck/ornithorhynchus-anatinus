@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Anatinus.My_Scripts.Gameplay;
 using UnityEngine;
 
 
@@ -8,14 +9,16 @@ public class playerBullets : MonoBehaviour
     public float xSpeed = 20.0f;
     public float ySpeed;
     public float zSpeed;
+
     public float timer = 1.0f;
     public float rotation;
     public float dmg;
 
     void Update()
     {
-        transform.Translate(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime, zSpeed * Time.deltaTime);
-        transform.eulerAngles = new Vector3(0, 0, rotation);
+        Transform transform1;
+        (transform1 = transform).Translate(xSpeed * Time.deltaTime, ySpeed * Time.deltaTime, zSpeed * Time.deltaTime);
+        transform1.eulerAngles = new Vector3(0, 0, rotation);
 
         timer -= 5.0f * Time.deltaTime;
         if (timer < 0)
@@ -50,7 +53,6 @@ public class playerBullets : MonoBehaviour
         {
             health.TakeDamage(dmg);
             Debug.Log(dmg + " this is 'dmg', from the bullet script");
-            /*LeanPool.*/
             Destroy(gameObject);
         }
 

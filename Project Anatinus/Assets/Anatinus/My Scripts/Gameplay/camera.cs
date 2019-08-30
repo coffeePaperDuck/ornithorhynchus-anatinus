@@ -1,21 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class camera: MonoBehaviour
+namespace Anatinus.My_Scripts.Gameplay
 {
-    //public float y;
-    public Transform player;
-
-    // Start is called before the first frame update
-    void Start()
+    public class camera: MonoBehaviour
     {
-        
-    }
+        //public float y;
+        public Transform player;
+        private GameObject _gameObjectPlayer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.localPosition = new Vector3(0, GameObject.Find("player").transform.position.y/4, -10);
+        // Start is called before the first frame update
+        void Start()
+        {
+            _gameObjectPlayer = GameObject.Find("player");
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            transform.localPosition = new Vector3(0, _gameObjectPlayer.transform.position.y/4, -10);
+        }
     }
 }

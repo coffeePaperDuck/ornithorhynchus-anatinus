@@ -15,36 +15,39 @@ public class enemyFish : MonoBehaviour
     //4 = ( formation //not yet implemented
     //5 = twirling //not yet implemented
 
-    int tilt = 0;
-    int rot = 0;
+    int _tilt = 0;
+    int _rot = 0;
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Update is called once per frame
     void Update()
     {
-        //Lock Z axis
-        Vector3 pos = transform.position;
-        pos.z = 0;
-        transform.position = pos;
+        //transform
+        var tf = transform;
+        
+        //Lock axes listed below (Z axis is typically locked to keep the object on the 2D plane)
+        Vector3 axis = tf.position;
+        /*Z axis*/ axis.z = 0;
+        tf.position = axis;
 
         //Apply speed/tilt/rot
-        transform.Translate(-speed * Time.deltaTime, 0, 0);
-        transform.eulerAngles = new Vector3(0, -rot, tilt);
+        tf.Translate(-speed * Time.deltaTime, 0, 0);
+        tf.eulerAngles = new Vector3(0, -_rot, _tilt);
 
         timer += 1.0f * Time.deltaTime;
 
         //Change direction
-        if (transform.position.x < 2.4f && timer > 0.3f)
+        if (tf.position.x < 2.4f && timer > 0.3f)
         {
-            if (rot != 54)
+            if (_rot != 54)
             {
                 if (direction == 1)
                 {
-                tilt -= 18; //Tilt the other way
+                    _tilt -= 18; //Tilt the other way
                 }
-                else { tilt += 18; }
-                rot += 18;
+                else { _tilt += 18; }
+                _rot += 18;
                 speed += speedIncrease;
                 speedIncrease += speedIncrease;
             }

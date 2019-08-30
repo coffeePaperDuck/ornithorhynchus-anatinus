@@ -56,15 +56,15 @@ public class groupGoldfish : MonoBehaviour
             goldfish3.SetActive(true);
             spawnCount = 3;
         }
-       /* if (spawnTimer > 0.3 & spawnCount == 3)
-        {
-            goldfish4.SetActive(true);
-            spawnCount = 4;
-        }
-        if (spawnTimer > 0.4 & spawnCount == 4)
-        {
-            goldfish5.SetActive(true);
-            spawnCount = 5;
-        }*/
+        /* if (spawnTimer > 0.3 & spawnCount == 3)
+         {
+             goldfish4.SetActive(true);
+             spawnCount = 4;
+         }
+         if (spawnTimer > 0.4 & spawnCount == 4)
+         {
+             goldfish5.SetActive(true);
+             spawnCount = 5;
+         }*/
     }
 }

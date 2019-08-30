@@ -9,14 +9,14 @@ public class enemyBulletGraphics : MonoBehaviour
     public Material material2;
     public Material material3;
     public float duration = 1.0f;
-    Renderer rend;
+    Renderer _rend;
 
     void Start()
     {
-        rend = GetComponent<Renderer>();
+        _rend = GetComponent<Renderer>();
 
         // At start, use the first material
-        rend.material = material1;
+        _rend.material = material1;
     }
 
     void Update()
@@ -25,11 +25,11 @@ public class enemyBulletGraphics : MonoBehaviour
         if (deflected == false)
         {
             float lerp = Mathf.PingPong(Time.time, duration) / duration;
-            rend.material.Lerp(material1, material2, lerp);
+            _rend.material.Lerp(material1, material2, lerp);
         }
         else
         {
-            rend.material = material3;
+            _rend.material = material3;
         }
     }
 }

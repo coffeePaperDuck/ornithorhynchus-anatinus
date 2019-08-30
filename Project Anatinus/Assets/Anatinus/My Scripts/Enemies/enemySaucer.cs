@@ -5,94 +5,87 @@ using UnityEngine;
 
 public class enemySaucer : MonoBehaviour
 {
-    public GameObject gunPrefab;
+    public bool execute = false;
 
-    public float animationTimer = 12;
-    public float shootingTimer = 2;
+    public float animTime = 12;
     public float maxSpeed = 10;
-    float speed;
+    float _speed;
     public float xSpeed = -7;
     public int tilt = 0;
 
-
-    // Use this for initialization
-    void Start()
+    void OnCollisionEnter(Collision collision)
     {
-
+        execute = true;
     }
 
     // Update is called once per tilt
     void Update()
-    {
-        //Count timers
-        animationTimer += 10 * Time.deltaTime;
-        shootingTimer -= 1 * Time.deltaTime;
-
-        //shooting
-        if (shootingTimer < 0)
+    {Transform tf;
+        if (execute == true)
         {
+            //Count timers
+            animTime += 10 * Time.deltaTime;
+
+            //tilts
+            if (animTime > 1)
+            {
+                tilt = 15;
+                _speed = maxSpeed / 2;
+            }
+
+            if (animTime > 2)
+            {
+                tilt = 30;
+                _speed = maxSpeed;
+            }
+
+            if (animTime > 5)
+            {
+                tilt = 15;
+                _speed = maxSpeed / 2;
+            }
+
+            if (animTime > 6)
+            {
+                tilt = 0;
+                _speed = 0;
+            }
+
+            if (animTime > 7)
+            {
+                tilt = -15;
+                _speed = -maxSpeed / 2;
+            }
+
+            if (animTime > 8)
+            {
+                tilt = -30;
+                _speed = -maxSpeed;
+            }
+
+            if (animTime > 11)
+            {
+                tilt = -15;
+                _speed = -maxSpeed / 2;
+            }
+
+            if (animTime > 12)
+            {
+                tilt = 0;
+                _speed = 0;
+                animTime = 0;
+            }
+
+
+            //apply tilts
+            (tf = transform).Translate(xSpeed * Time.deltaTime, _speed * Time.deltaTime, 0);
+            tf.eulerAngles = new Vector3(tilt, 0, 0);
+
+            //Lock axes listed below (Z axis is typically locked to keep the object on the 2D plane)
+            Vector3 axis = tf.position;
+            /*Z axis*/
+            axis.z = 0;
+            tf.position = axis;
         }
-
-        //tilts
-        if (animationTimer > 1)
-        {
-            tilt = 15;
-            speed = maxSpeed / 2;
-        }
-
-        if (animationTimer > 2)
-        {
-            tilt = 30;
-            speed = maxSpeed;
-        }
-
-        if (animationTimer > 5)
-        {
-            tilt = 15;
-            speed = maxSpeed / 2;
-        }
-
-        if (animationTimer > 6)
-        {
-            tilt = 0;
-            speed = 0;
-        }
-
-        if (animationTimer > 7)
-        {
-            tilt = -15;
-            speed = -maxSpeed / 2;
-        }
-
-        if (animationTimer > 8)
-        {
-            tilt = -30;
-            speed = -maxSpeed;
-        }
-
-        if (animationTimer > 11)
-        {
-            tilt = -15;
-            speed = -maxSpeed / 2;
-        }
-
-        if (animationTimer > 12)
-        {
-            tilt = 0;
-            speed = 0;
-            animationTimer = 0;
-        }
-
-
-        //apply tilts
-        transform.Translate(xSpeed * Time.deltaTime, speed * Time.deltaTime, 0);
-        transform.eulerAngles = new Vector3(tilt, 0, 0);
-        Vector3 pos = transform.position;
-        pos.z = 0;
-        transform.position = pos;
-
-        //float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed;
-        //float z = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed;
-        //transform.Translate(0, 0, z);
     }
 }

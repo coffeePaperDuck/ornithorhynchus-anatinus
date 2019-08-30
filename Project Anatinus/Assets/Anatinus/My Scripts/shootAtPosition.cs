@@ -8,23 +8,20 @@ public class shootAtPosition : MonoBehaviour
 
     float speed = 2f;
 
-    GameObject target;
+    GameObject _target;
 
-    Rigidbody rb;
+    Rigidbody _rb;
 
-    Vector3 moveDirection;
+    Vector3 _moveDirection;
 
 
 
     void Start()
     {
-        rb = GetComponent<Rigidbody> ();
-        target = GameObject.Find ("Player(Clone)");
-        moveDirection = (target.transform.position - transform.position).normalized * speed;
-        rb.velocity = new Vector3(moveDirection.x, moveDirection.y, moveDirection.z);
-
-
-
+        _rb = GetComponent<Rigidbody> ();
+        _target = GameObject.Find ("player");
+        _moveDirection = (_target.transform.position - transform.position).normalized * speed;
+        _rb.velocity = new Vector3(_moveDirection.x, _moveDirection.y, _moveDirection.z);
     }
 }
     

@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace Anatinus.My_Scripts.Gameplay
 {
-    public float maxHealth;
-    public float currentHealth;
-
-
-    public void TakeDamage(float amount)
+    public class Health : MonoBehaviour
     {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
+        public float maxHealth;
+        public float currentHealth;
+
+
+        public void TakeDamage(float amount)
         {
-            currentHealth = maxHealth;
-            gameObject.SetActive(false);
-            Debug.Log("Dead");
+            currentHealth -= amount;
+            if (currentHealth <= 0)
+            {
+                currentHealth = maxHealth;
+                gameObject.SetActive(false);
+                Debug.Log("Dead");
+            }
         }
     }
 }

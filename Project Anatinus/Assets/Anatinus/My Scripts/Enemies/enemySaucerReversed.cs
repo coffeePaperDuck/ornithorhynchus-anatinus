@@ -10,7 +10,7 @@ public class enemySaucerReversed : MonoBehaviour
     public float animationTimer = 12;
     public float shootingTimer = 2;
     public float maxSpeed = 10;
-    float speed;
+    float _speed;
     public float xSpeed = -10;
     public int tilt = 0;
 
@@ -37,59 +37,62 @@ public class enemySaucerReversed : MonoBehaviour
         if (animationTimer > 1)
         {
             tilt = -15;
-            speed = -maxSpeed / 2;
+            _speed = -maxSpeed / 2;
         }
 
         if (animationTimer > 2)
         {
             tilt = -30;
-            speed = -maxSpeed;
+            _speed = -maxSpeed;
         }
 
         if (animationTimer > 5)
         {
             tilt = -15;
-            speed = -maxSpeed / 2;
+            _speed = -maxSpeed / 2;
         }
 
         if (animationTimer > 6)
         {
             tilt = 0;
-            speed = 0;
+            _speed = 0;
         }
 
         if (animationTimer > 7)
         {
             tilt = 15;
-            speed = maxSpeed / 2;
+            _speed = maxSpeed / 2;
         }
 
         if (animationTimer > 8)
         {
             tilt = 30;
-            speed = maxSpeed;
+            _speed = maxSpeed;
         }
 
         if (animationTimer > 11)
         {
             tilt = 15;
-            speed = maxSpeed / 2;
+            _speed = maxSpeed / 2;
         }
 
         if (animationTimer > 12)
         {
             tilt = 0;
-            speed = 0;
+            _speed = 0;
             animationTimer = 0;
         }
 
 
         //apply tilts
-        transform.Translate(xSpeed * Time.deltaTime, speed * Time.deltaTime, 0);
-        transform.eulerAngles = new Vector3(tilt, 0, 0);
-        Vector3 pos = transform.position;
+        Transform transform1;
+        
+        (transform1 = transform).Translate(xSpeed * Time.deltaTime, _speed * Time.deltaTime, 0);
+        transform1.eulerAngles = new Vector3(tilt, 0, 0);
+        
+        Vector3 pos = transform1.position;
         pos.z = 0;
-        transform.position = pos;
+        transform1.position = pos;
 
         //float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed;
         //float z = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed;

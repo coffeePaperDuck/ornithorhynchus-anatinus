@@ -40,17 +40,17 @@ public class CustomEditorBase : Editor
     protected void HandleProperty(SerializedProperty property)
     {
         //Debug.LogFormat("name: {0}, displayName: {1}, type: {2}, propertyType: {3}, path: {4}", property.name, property.displayName, property.type, property.propertyType, property.propertyPath);
-        bool isdefaultScriptProperty = property.name.Equals("m_Script") && property.type.Equals("PPtr<MonoScript>") && property.propertyType == SerializedPropertyType.ObjectReference && property.propertyPath.Equals("m_Script");
-        bool cachedGUIEnabled = GUI.enabled;
-        if (isdefaultScriptProperty)
+        bool isDefaultScriptProperty = property.name.Equals("m_Script") && property.type.Equals("PPtr<MonoScript>") && property.propertyType == SerializedPropertyType.ObjectReference && property.propertyPath.Equals("m_Script");
+        bool cachedGuiEnabled = GUI.enabled;
+        if (isDefaultScriptProperty)
             GUI.enabled = false;
         //var attr = this.GetPropertyAttributes(property);
         if (property.isArray && property.propertyType != SerializedPropertyType.String)
             this.HandleArray(property);
         else
             EditorGUILayout.PropertyField(property, property.isExpanded);
-        if (isdefaultScriptProperty)
-            GUI.enabled = cachedGUIEnabled;
+        if (isDefaultScriptProperty)
+            GUI.enabled = cachedGuiEnabled;
     }
 
     protected void HandleArray(SerializedProperty property)

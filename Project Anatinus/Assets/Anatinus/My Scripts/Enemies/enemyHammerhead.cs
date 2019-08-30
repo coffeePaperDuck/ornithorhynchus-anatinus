@@ -22,12 +22,6 @@ public class enemyHammerhead : MonoBehaviour
     public float timerSpeed = 1;
     public float timerMax = 2;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         execute = true;

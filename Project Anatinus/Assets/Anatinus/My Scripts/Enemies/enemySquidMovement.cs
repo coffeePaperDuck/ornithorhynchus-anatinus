@@ -48,6 +48,7 @@ public class enemySquidMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        var tf = transform;
         fleeTimer -= 1.0f * Time.deltaTime;
         limitTimer += 1.0f * Time.deltaTime;
 
@@ -83,13 +84,12 @@ public class enemySquidMovement : MonoBehaviour
             }
 
             //lock rotation
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            tf.eulerAngles = new Vector3(0, 0, 0);
 
-            //lock onto axises listed below
-            Vector3 pos = transform.position;
-            /*Z axis*/
-            pos.z = 0;
-            transform.position = pos;
+            //Lock axes listed below (Z axis is typically locked to keep the object on the 2D plane)
+            Vector3 axis = tf.position;
+            /*Z Axis*/ axis.z = 0;
+            tf.position = axis;
         }
 
         //When fleeTimer runs out, fleeing = true.

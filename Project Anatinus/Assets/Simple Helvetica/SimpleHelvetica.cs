@@ -5,6 +5,8 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
+// ReSharper disable HeapView.ObjectAllocation.Possible
+#pragma warning disable 618
 
 [ExecuteInEditMode]
 public class SimpleHelvetica : MonoBehaviour {

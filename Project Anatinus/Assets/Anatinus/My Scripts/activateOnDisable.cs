@@ -18,7 +18,6 @@ public class activateOnDisable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         activatable.transform.position = this.transform.position;
     }
 

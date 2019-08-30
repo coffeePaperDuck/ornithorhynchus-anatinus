@@ -1,33 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class scenery : MonoBehaviour
+namespace Anatinus.My_Scripts.Gameplay
 {
-    float speed = -5.0f;
-    public float timer = 2.0f;
-    public int endPoint = -30;
-
-    // Use this for initialization
-    void Start ()
+    public class scenery : MonoBehaviour
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        transform.Translate(speed * Time.deltaTime, 0, 0);
+        float speed = -5.0f;
+        public float timer = 2.0f;
+        public int endPoint = -30;
 
-        //lock onto axises listed below
-        Vector3 pos = transform.position;
-        /*Y axis*/pos.y = transform.position.y;
-        /*Z axis*/pos.z = transform.position.z;
-        transform.position = pos;
-
-        if (transform.position.x < endPoint)
+        // Use this for initialization
+        void Start ()
         {
-            Destroy(gameObject);
+		
+        }
+	
+        // Update is called once per frame
+        void Update ()
+        {
+            transform.Translate(speed * Time.deltaTime, 0, 0);
+
+            //lock onto axises listed below
+            Vector3 pos = transform.position;
+            /*Y axis*/pos.y = transform.position.y;
+            /*Z axis*/pos.z = transform.position.z;
+            transform.position = pos;
+
+            if (transform.position.x < endPoint)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
