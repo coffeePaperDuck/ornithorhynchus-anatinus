@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿
+
+// THIS SCRIPT ONLY EXISTS FOR EASE OF DEVELOPMENT, AND WILL BE REMOVED IN PUBLIC RELEASES.
+
+using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Logan\.Rider2019.2\system\extResources" t="IncludeRecursive" />
@@ -58,23 +58,22 @@
               <e p="playerAnimation.cs" t="Include" />
               <e p="playerMovement.cs" t="Include" />
               <e p="playerOffense.cs" t="Include" />
+              <e p="Weapons" t="Include">
+                <e p="pickupPods.cs" t="Include" />
+                <e p="playerBulletMovement.cs" t="Include" />
+                <e p="playerBullets.cs" t="Include" />
+                <e p="playerPod.cs" t="Include" />
+                <e p="playerPulse.cs" t="Include" />
+                <e p="playerRockets.cs" t="Include" />
+                <e p="playerWeaponPods.cs" t="Include" />
+                <e p="powerupStar.cs" t="Include" />
+              </e>
             </e>
             <e p="point.cs" t="Include" />
             <e p="pointsOnDisable.cs" t="Include" />
             <e p="shootAtPosition.cs" t="Include" />
             <e p="shootProjectile.cs" t="Include" />
             <e p="staticRotation.cs" t="Include" />
-            <e p="Weapons" t="Include">
-              <e p="pickupPods.cs" t="Include" />
-              <e p="playerBullets.cs" t="Include" />
-              <e p="playerPod.cs" t="Include" />
-              <e p="playerPulse.cs" t="Include" />
-              <e p="playerRockets.cs" t="Include" />
-              <e p="playerRocketsPod1.cs" t="Include" />
-              <e p="playerRocketsPod2.cs" t="Include" />
-              <e p="playerWeaponPods.cs" t="Include" />
-              <e p="powerupStar.cs" t="Include" />
-            </e>
           </e>
           <e p="My Shader" t="Include">
             <e p="Additive2D.shader" t="Include" />

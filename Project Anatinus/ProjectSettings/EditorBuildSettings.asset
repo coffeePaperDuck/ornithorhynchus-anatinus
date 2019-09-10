@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Anatinus/My Scenes/scene_menu.unity
+    path: Assets/Anatinus/Scenes/scene_menu.unity
     guid: c9aa40bb24ecdbe4aa420451a43ef7fa
   - enabled: 1
-    path: Assets/Anatinus/My Scenes/scene_lvl1.unity
+    path: Assets/Anatinus/Scenes/scene_lvl1.unity
     guid: c6b3e45437fd3cb4e95284178947c01c
   m_configObjects: {}
